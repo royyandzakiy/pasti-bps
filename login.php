@@ -4,15 +4,14 @@
 
     if (isset($_POST['login'])) {
         unset($_POST['login']);
-
         
         // get data
         $username = $_POST('username');
         $password = $_POST('password');
+        
+        ?><script>alert('Login');</script><?php
 
-        ?><script>alert('<?= $username ?>');</script><?php
-
-        $query_user = "SELECT * FROM TABLENAME WHERE username = '$username' AND password = '$password'";
+        $query_user = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
         $result_user = $con->query($query_user);
 
         if ($result_user) {
@@ -28,16 +27,9 @@
 ?>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-    <title>Pasti BPS</title>
-</head>
+<?php
+    require('head.php');
+?>
 
 <body>
     <!------ Include the above in your HEAD tag ---------->
@@ -54,7 +46,7 @@
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
-                        <form id="loginform" class="form-horizontal" role="form" method="post">
+                        <form id="loginform" class="form-horizontal" role="form" method="post" action="login.php">
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

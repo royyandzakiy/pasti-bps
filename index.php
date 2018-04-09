@@ -1,4 +1,5 @@
 <?php 
+    require('is_loggedin.php');
     require('blog_connect.php'); 
 
     sql_connect('pasti_db');

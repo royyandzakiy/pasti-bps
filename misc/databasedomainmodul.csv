@@ -1,0 +1,17 @@
+id_concept,judul_konsep,ID_topik,judul_topik,lock
+01,Pengenalan Survei Tahunan Industri,0101,Pendahuluan,buka
+01,Pengenalan Survei Tahunan Industri,0102,Kuesioner,kunci
+01,Pengenalan Survei Tahunan Industri,0103,Tes 1,kunci
+02,Updating Direktori,0201,Garis Besar,kunci
+02,Updating Direktori,0202,Pedoman Matching,kunci
+02,Updating Direktori,0203,Kuesioner Updating Perusahaan,kunci
+02,Updating Direktori,0204,Kuesioner I-B,kunci
+02,Updating Direktori,0205,Kuesioner II-B,kunci
+02,Updating Direktori,0206,Istilah dan Kode Perusahaan,kunci
+02,Updating Direktori,0207,Tes 2,kunci
+03,Pedoman Pencacahan II-A,0301,Tata Cara Pengisian Bagian I - II,kunci
+03,Pedoman Pencacahan II-A,0302,Tata Cara Pengisian Bagian III,kunci
+03,Pedoman Pencacahan II-A,0303,Tata Cara Pengisian Bagian IV - X,kunci
+03,Pedoman Pencacahan II-A,0304,Konsistensi dan Kewajaran Data,kunci
+03,Pedoman Pencacahan II-A,0305,Kewajaran Data Input - Output,kunci
+03,Pedoman Pencacahan II-A,0306,Tes 3,kunci

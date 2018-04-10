@@ -10,7 +10,7 @@
 
     $_SESSION['test_datetime_start'] = date('m/d/Y h:i:s a', time());
 
-    $query = "SELECT id_konsep, id_topik, id_test, id_question, weight, question, correct, A, B, C, D FROM pretest";
+    $query = "SELECT id_konsep, id_topik, id_test, id_question, weight, question, correct, A, B, C, D FROM " . $test_type;
     $result = $con->query($query);
 
     $rows = array();

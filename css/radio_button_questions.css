@@ -4,12 +4,19 @@
     overflow: hidden;
 }
 
+.question {
+    line-height: 1.5em;
+    font-size: 1.3em;
+    margin-top:2em;
+}
+
 .funkyradio label {
     /*min-width: 400px;*/
     width: 100%;
     border-radius: 3px;
     border: 1px solid #D1D3D4;
     font-weight: normal;
+    line-height: 1.5em;
 }
 
 .funkyradio input[type="radio"]:empty,
@@ -20,14 +27,14 @@
 .funkyradio input[type="radio"]:empty~label,
 .funkyradio input[type="checkbox"]:empty~label {
     position: relative;
-    line-height: 2.5em;
-    text-indent: 3.25em;
-    margin-top: 2em;
+    padding: 0.3em;
+    margin-top: 0em;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    padding-left: 3em;
 }
 
 .funkyradio input[type="radio"]:empty~label:before,

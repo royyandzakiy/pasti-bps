@@ -1,10 +1,29 @@
-<div class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="navbar-nav">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                <i class="glyphicon glyphicon-align-left"></i>
+                <span>Tampilkan Sidebar</span>
+            </button>
+
             <a class="navbar-brand" href="index.php">
-                <img src="favicon.png" width="30" height="30" alt="">
+                <img src="logo.png" width="30" height="30" alt="">
             </a>
-            <a href="download.php" class="nav-item nav-link">Download</a>
-            <a href="user.php" class="nav-item nav-link">User</a>
-            <a href="logout.php" class="nav-item nav-link">Logout</a>
         </div>
-</div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">User</a>
+                </li>
+                <li>
+                    <a href="logout.php">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

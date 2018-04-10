@@ -2,26 +2,50 @@
     require('blog_connect.php'); 
     sql_connect('pasti_db');
 
+    if (session_status() != PHP_SESSION_NONE) {
+        if ($_SESSION['logged_in']) {
+            header('location:index.php');
+        } else {
+            session_destroy();
+        }
+    }
+
     if (isset($_POST['login'])) {
         unset($_POST['login']);
         
         // get data
-        $username = $_POST('username');
-        $password = $_POST('password');
+        $nip = $_POST['nip'];
+        $password = $_POST['password'];
         
-        ?><script>alert('Login');</script><?php
+        
+        $query = "SELECT id, nama, pengalaman_survei, pengalaman_SIBS, level_kemampuan, konsep_terakhir, topik_terakhir, nip FROM users WHERE nip = '$nip' AND password = '$password'";
+        $result = $con->query($query);
 
-        $query_user = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-        $result_user = $con->query($query_user);
-
-        if ($result_user) {
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
+        $row = $result->fetch(PDO::FETCH_NUM);
+		if (!empty($row)) {
+            if (session_status() != PHP_SESSION_NONE) {
+                session_destroy();
             }
+            session_start();
 
             $_SESSION['logged_in'] = true;
+            $_SESSION['nama'] = $row[1];
+            $_SESSION['pengalaman_survei'] = $row[2];
+            $_SESSION['pengalaman_SIBS'] = $row[3];
+            $_SESSION['level_kemampuan'] = $row[4];
+            $_SESSION['konsep_terakhir'] = $row[5];
+            $_SESSION['topik_terakhir'] = $row[6];
+            $_SESSION['nip'] = $row[7];
+
+            // for($i=0; $i<8; $i++) {
+            //     echo($row[$i] . '<br />');
+            // }
+
+            // echo('tes = ' . ((int) $row[5] <= (int) '01') ? 'true' : 'false');
+
+            header('location:index.php');
         } else {
-            alert('NIP & Password tidak sesuai');
+            header('location:login.php?login_status=false');
         }
     }
 ?>
@@ -30,6 +54,22 @@
 <?php
     require('head.php');
 ?>
+<script>
+    // $(document).ready(
+        var parts = window.location.search.substr(1).split("&");
+        var $_GET = {};
+        for (var i = 0; i < parts.length; i++) {
+            var temp = parts[i].split("=");
+            $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+        }
+
+        if ($_GET.login_status != undefined) {
+            if($_GET.login_status == false) {
+                alert('Username dan Password tidak sesuai');
+            }
+        }
+    // );
+</script>
 
 <body>
     <!------ Include the above in your HEAD tag ---------->
@@ -50,7 +90,7 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="NIP 5 Digit">                                        
+                                        <input id="login-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit">                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">

@@ -33,9 +33,13 @@
             $_SESSION['pengalaman_survei'] = $row[2];
             $_SESSION['pengalaman_SIBS'] = $row[3];
             $_SESSION['level_kemampuan'] = $row[4];
+            // tentukan bakal buka materi mana
             $_SESSION['konsep_terakhir'] = $row[5];
             $_SESSION['topik_terakhir'] = $row[6];
             $_SESSION['nip'] = $row[7];
+
+            $_SESSION['konsep_aktif'] = $row[5];
+            $_SESSION['topik_aktif'] = $row[6];
 
             // for($i=0; $i<8; $i++) {
             //     echo($row[$i] . '<br />');
@@ -90,7 +94,7 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit">                                        
+                                        <input id="login-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit" maxlength="5">                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
@@ -213,6 +217,7 @@
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
                                         <button name="daftar" id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Daftar</button>
+                                        <a onClick="$('#signupbox').hide(); $('#loginbox').show()"><button name="daftar" id="back-signin" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Kembali ke Login</button></a>
                                     </div>
                                 </div>
                                 

@@ -184,3 +184,26 @@ a.article:hover {
 #tingkat_penguasaan {
     padding: 20px;
 }
+
+.datepicker-days {
+    border-left: 10px solid white;
+}
+
+.datepicker-days .table-condensed {
+    margin: 0 auto;
+}
+
+.datepicker-days .table-condensed td {
+    font-size: 2em;
+    color: white;
+}
+
+.datepicker-days .table-condensed .today {
+    background: rgba(255,255,255,.3);
+    color: #7386D5;
+}
+
+.datepicker-dropdown:before,
+.datepicker-dropdown:after {
+    display: none;
+}

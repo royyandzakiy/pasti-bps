@@ -7,16 +7,17 @@
 
     sql_connect('pasti_db');
 
-    $konsep_aktif = $_SESSION['konsep_terakhir'];
-    $topik_aktif = $_SESSION['topik_terakhir'];
+    $konsep_aktif = $_SESSION['konsep_aktif'];
+    $topik_aktif = $_SESSION['topik_aktif'];
 
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
+    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
     $result = $con->query($query);
 
     $row = $result->fetch(PDO::FETCH_NUM);
 
     $konsep_aktif_judul = $row[1];
     $topik_aktif_judul = $row[3];
+    $video_url_aktif = $row[5];
 ?>
 
 <html !DOCTYPE>
@@ -31,7 +32,7 @@
         ?>
     
         <!-- Page Content Holder -->
-        <div id="content">
+        <div id="content" class="container">
     
             <?php
                 include('navbar.php');
@@ -43,19 +44,12 @@
             <hr />
             <h2><?php echo $topik_aktif .' - '. $topik_aktif_judul; ?></h2>
             <div class="videoWrapper">
-                <iframe width="560" height="349" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                <iframe width="560" height="349" src="https://www.youtube.com/embed/<?= $video_url_aktif; ?>" frameborder="0" allowfullscreen></iframe>
             </div>
             
             <hr />
-            <h4>
-                <small>Penjelasan</small>
-            </h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur
-                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <button type="submit" class="btn btn-default">Kembali</button>
+            <a href="change_page.php?goto_konsep=<?= $konsep_aktif ?>&goto_topik=0<?= ((int) $topik_aktif) > 1 ? (int) $topik_aktif - 1 : (int) $topik_aktif ?>"><button type="submit" class="btn btn-default">Back</button></a>
+            <a href="change_page.php?goto_konsep=<?= $konsep_aktif ?>&goto_topik=0<?= (int) $topik_aktif + 1 ?>"><button type="submit" class="btn btn-primary">Next</button></a>
         </div>
     </div>
 

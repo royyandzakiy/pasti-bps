@@ -25,6 +25,7 @@
         $id_test = ($row[2] < 10 ? '0'.$row[2] : $row[2]);
         $id_question = ($row[2] < 10 ? '0'.$row[3] : $row[3]);
 
+        if(!isset($_POST['q-'.$id_test.$id_question])) $_POST['q-'.$id_test.$id_question] = "";
         $correct = $row[6] == $_POST['q-'.$id_test.$id_question] ? 1 : 0;
         array_push($rekap, $correct);
 

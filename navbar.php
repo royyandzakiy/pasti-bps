@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <div class="navbar-header">
-            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
                 <i class="glyphicon glyphicon-align-left"></i>
                 <span>Tampilkan Sidebar</span>
             </button>

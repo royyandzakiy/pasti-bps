@@ -3,8 +3,10 @@
     require('blog_connect.php'); 
     sql_connect('pasti_db');
 
-    $test_type = 'pretest';
+    $test_type = 'pertanyaantes';
+    $test_id_concept = 1;
     $_SESSION['test_type'] = $test_type;
+    $_SESSION['test_id_concept'] = $test_id_concept;
 ?>
 
 <html !DOCTYPE>

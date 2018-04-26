@@ -26,7 +26,7 @@
                 <li class="active">
                             <a href="#konsep-'.$row[0].'" data-toggle="collapse" aria-expanded="false">'.$crnt_judul.'</a>
                             <ul class="collapse list-unstyled" id="konsep-'.$row[0].'">
-                            <li id="topik-'.$row[2].'"><a href="#" class="'.(((int) $row[0] <= (int) $konsep_terakhir && (int) substr($row[2],2,2) <= (int) $topik_terakhir) ? 'unlocked' : 'locked').'">'.$row[3].'</a></li>
+                            <li id="topik-'.$row[2].'"><a href="#" class="'.($row[4] ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>
             ');
 
             while($row = $result->fetch(PDO::FETCH_NUM)) {

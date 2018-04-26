@@ -39,13 +39,53 @@
             ?>
     
             <h4>
-                <small><?php echo $konsep_aktif_judul; ?></small>
+                <small><?php echo "Bab " . $konsep_aktif . " - " . $konsep_aktif_judul; ?></small>
             </h4>
             <hr />
-            <h2><?php echo $topik_aktif .' - '. $topik_aktif_judul; ?></h2>
-            <div class="videoWrapper">
-                <iframe width="560" height="349" src="https://www.youtube.com/embed/<?= $video_url_aktif; ?>" frameborder="0" allowfullscreen></iframe>
-            </div>
+            <h2>Baik!</h2>
+            <table>
+                <tr>
+                    <th>Tingkat Penguasaan</th>
+                    <th>:</th>
+                    <th>81</th>
+                    <th>(0-100)</th>
+                </tr>
+                <tr>
+                    <td>Nilai</td>
+                    <td>:</td>
+                    <td>78</td>
+                    <td>(0-100)</td>
+                </tr>
+                <tr>
+                    <td>Jawaban Benar</td>
+                    <td>:</td>
+                    <td>16</td>
+                    <td>(0-20)</td>
+                </tr>
+                <tr>
+                    <td>Durasi</td>
+                    <td>:</td>
+                    <td>12</td>
+                    <td>Menit</td>
+                </tr>
+            </table>
+            Jawaban Salah:
+            <ol>
+                <li>Pertanyaan 1
+                    <div>Jawaban benar: Jawaban</div>
+                </li><li>Pertanyaan 2
+                    <div>Jawaban benar: Jawaban</div>
+                </li>
+            </ol>
+
+            PASTI merekomendasikan untuk mempelajari ulang topik:
+            <ol>
+                <li>Kuisioner Updating Perusahaan
+                </li><li>Kuisioner II-B
+                </li>
+            </ol>
+
+            Untuk menerima rekomendasi dari PASTI, klik "Accept", Jika menolak klik "Decline"
             
             <hr />
             <a href="change_page.php?goto=back"><button type="submit" class="btn btn-default">Back</button></a>

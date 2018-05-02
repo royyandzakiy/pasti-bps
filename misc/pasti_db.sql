@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2018 at 06:22 AM
+-- Generation Time: May 02, 2018 at 10:08 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `hasilpretest` (
   `id` int(11) NOT NULL,
   `id_siswa` varchar(256) NOT NULL,
+  `durasi` time NOT NULL,
   `q1` tinyint(1) NOT NULL,
   `q2` tinyint(1) NOT NULL,
   `q3` tinyint(1) NOT NULL,
@@ -50,16 +51,61 @@ CREATE TABLE `hasilpretest` (
 -- Dumping data for table `hasilpretest`
 --
 
-INSERT INTO `hasilpretest` (`id`, `id_siswa`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`) VALUES
-(1, '13515123', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
-(2, '13515123', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
-(3, '13515123', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
-(4, '13515123', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
-(5, '13515123', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
-(6, '13515123', 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0),
-(7, '13515123', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-(8, '13515123', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0),
-(9, '13515123', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0);
+INSERT INTO `hasilpretest` (`id`, `id_siswa`, `durasi`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`) VALUES
+(1, '13515123', '00:00:00', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
+(2, '13515123', '00:00:00', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
+(3, '13515123', '00:00:00', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
+(4, '13515123', '00:00:00', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
+(5, '13515123', '00:00:00', 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
+(6, '13515123', '00:00:00', 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0),
+(7, '13515123', '00:00:00', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(8, '13515123', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0),
+(9, '13515123', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hasiltest`
+--
+
+CREATE TABLE `hasiltest` (
+  `id` int(11) NOT NULL,
+  `id_siswa` varchar(256) NOT NULL,
+  `durasi` time NOT NULL,
+  `q1` tinyint(1) NOT NULL,
+  `q2` tinyint(1) NOT NULL,
+  `q3` tinyint(1) NOT NULL,
+  `q4` tinyint(1) NOT NULL,
+  `q5` tinyint(1) NOT NULL,
+  `q6` tinyint(1) NOT NULL,
+  `q7` tinyint(1) NOT NULL,
+  `q8` tinyint(1) NOT NULL,
+  `q9` tinyint(1) NOT NULL,
+  `q10` tinyint(1) NOT NULL,
+  `q11` tinyint(1) NOT NULL,
+  `q12` tinyint(1) NOT NULL,
+  `q13` tinyint(1) NOT NULL,
+  `q14` tinyint(1) NOT NULL,
+  `q15` tinyint(1) NOT NULL,
+  `q16` tinyint(1) NOT NULL,
+  `q17` tinyint(1) NOT NULL,
+  `q18` tinyint(1) NOT NULL,
+  `q19` tinyint(1) NOT NULL,
+  `q20` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `hasiltest`
+--
+
+INSERT INTO `hasiltest` (`id`, `id_siswa`, `durasi`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`, `q16`, `q17`, `q18`, `q19`, `q20`) VALUES
+(1, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, '13515', '00:06:23', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, '13515', '00:00:19', 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0),
+(7, '13515', '00:00:03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -125,8 +171,8 @@ INSERT INTO `materi` (`id_konsep`, `judul_konsep`, `id_topik`, `judul_topik`, `l
 
 CREATE TABLE `pertayaantes` (
   `id` int(11) NOT NULL,
-  `id_concept` int(11) NOT NULL,
-  `id_topic` int(11) NOT NULL,
+  `id_konsep` int(11) NOT NULL,
+  `id_topik` int(11) NOT NULL,
   `id_test` int(11) NOT NULL,
   `id_question` int(11) NOT NULL,
   `weight` int(11) NOT NULL,
@@ -142,7 +188,7 @@ CREATE TABLE `pertayaantes` (
 -- Dumping data for table `pertayaantes`
 --
 
-INSERT INTO `pertayaantes` (`id`, `id_concept`, `id_topic`, `id_test`, `id_question`, `weight`, `question`, `correct`, `A`, `B`, `C`, `D`) VALUES
+INSERT INTO `pertayaantes` (`id`, `id_konsep`, `id_topik`, `id_test`, `id_question`, `weight`, `question`, `correct`, `A`, `B`, `C`, `D`) VALUES
 (1, 1, 101, 1, 1, 4, 'Dasar hukum pelaksanaan survei statistik di atur dalam UU nomor berapa', 'Undang-Undang nomor 16 Tahun 1997', 'Undang-Undang nomor 7 Tahun 2008', 'Undang-Undang Nomor 51 Tahun 1999', 'Undang-Undang Nomor 7 Tahun 2017', 'Undang-Undang nomor 16 Tahun 1997'),
 (2, 1, 101, 1, 2, 4, 'Definisi perusahaan/usaha industri manufaktur adalah', 'Suatu unit produksi, terletak pada tempat tertentu, melakukan kegiatan ekonomi, bertujuan mengubah suatu barang menjadi produk baru yang nilainya lebih tinggi', 'Suatu unit produksi (kesatuan) yang memperkerjakan 20 orang atau lebih', 'Perusahaan yang bergerak dalam hal perdagangan', 'Merupakan perusahaan yang dapat dimiliki oleh swasta maupun negara, dapat berupa perusahaan persekutuan', 'Suatu unit produksi, terletak pada tempat tertentu, melakukan kegiatan ekonomi, bertujuan mengubah suatu barang menjadi produk baru yang nilainya lebih tinggi'),
 (3, 1, 101, 1, 3, 4, 'Tujuan dan Manfaat dari Survei Industri Besar dan Sedang (IBS) adalah', 'Menyediakan data dan informasi statistik industri besar dan sedang yang lengkap, akurat, relevan dan tepat waktu untuk bahan evaluasi dan perencanaan pembangunan', 'Memberikan pemahaman dan diagnostik awal atas kondisi aspek organisasi yang dapat mempengaruhi kinerja organisasi jangka panjang seluruh pegawai pada setiap level', 'Untuk mengetahui kepuasan para pelanggan dengan pelayanan jasa dan produk yang diberikan', 'Menyelenggarakan pelayanan dibidang perencanaan, ketatausahaan, kepegawaian, keuangan, kearsipan, kehumasan, hukum, perlengkapan dan rumah tangga', 'Menyediakan data dan informasi statistik industri besar dan sedang yang lengkap, akurat, relevan dan tepat waktu untuk bahan evaluasi dan perencanaan pembangunan'),
@@ -366,6 +412,12 @@ ALTER TABLE `hasilpretest`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hasiltest`
+--
+ALTER TABLE `hasiltest`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `materi`
 --
 ALTER TABLE `materi`
@@ -422,6 +474,11 @@ ALTER TABLE `users_materi`
 --
 ALTER TABLE `hasilpretest`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `hasiltest`
+--
+ALTER TABLE `hasiltest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `materi`
 --

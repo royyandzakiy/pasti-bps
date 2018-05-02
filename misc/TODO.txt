@@ -1,0 +1,10 @@
+TODO:
+- hasil_tes
+	- pemula <40
+	- menengah >=40 && <70
+	- baik >=70 && <90
+	- ahli >=90
+- buat hasil_belajar > di SS
+- implementasi fuzzy logic
+- buat alur pada "change_page"
+	- gabisa pindah bab klo level_pengetahuan kurang

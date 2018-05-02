@@ -1,0 +1,540 @@
+Imports System.Data
+Imports MySql.Data.MySqlClient
+
+Public Class Form6
+
+    Private Sub Form6_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub FuzzyDurasi()
+        If Durasi.Text = "" Then
+            Durasi.Text = 0
+        End If
+
+        If Durasi.Text >= 0 And Durasi.Text <= 10 Then
+            If Durasi.Text >= 0 And Durasi.Text < 8 Then
+                DurasiPendek = 1
+            ElseIf Durasi.Text >= 8 And Durasi.Text <= 10 Then
+                DurasiPendek = (10 - Durasi.Text) / 2
+            End If
+        Else
+            DurasiPendek = 0
+        End If
+
+        If Durasi.Text >= 8 And Durasi.Text <= 22 Then
+            If Durasi.Text >= 8 And Durasi.Text <= 10 Then
+                DurasiSedang = (Durasi.Text - 8) / 2
+            ElseIf Durasi.Text > 10 And Durasi.Text < 20 Then
+                DurasiSedang = 1
+            ElseIf Durasi.Text >= 20 And Durasi.Text <= 22 Then
+                DurasiSedang = (22 - Durasi.Text) / 2
+            End If
+        Else
+            DurasiSedang = 0
+        End If
+
+        If Durasi.Text >= 20 And Durasi.Text <= 30 Then
+            If Durasi.Text >= 20 And Durasi.Text <= 22 Then
+                DurasiPanjang = (Durasi.Text - 20) / 2
+            ElseIf Durasi.Text > 22 And Durasi.Text <= 30 Then
+                DurasiPanjang = 1
+            End If
+        Else
+            DurasiPanjang = 0
+        End If
+    End Sub
+
+    Private Sub FuzzyJB()
+        If JB.Text = "" Then
+            JB.Text = 0
+        End If
+
+        If JB.Text >= 0 And JB.Text <= 8 Then
+            JBSedikit = (8 - JB.Text) / 8
+        Else
+            JBSedikit = 0
+        End If
+
+        If JB.Text >= 7 And JB.Text <= 13 Then
+            If JB.Text >= 7 And JB.Text <= 9 Then
+                JBSedang = (JB.Text - 7) / 2
+            ElseIf JB.Text > 9 And JB.Text < 11 Then
+                JBSedang = 1
+            ElseIf JB.Text >= 11 And JB.Text <= 13 Then
+                JBSedang = (13 - JB.Text) / 2
+            End If
+        Else
+            JBSedang = 0
+        End If
+
+        If JB.Text >= 12 And JB.Text <= 20 Then
+            JBBanyak = (JB.Text - 12) / 8
+        Else
+            JBBanyak = 0
+        End If
+    End Sub
+
+    Private Sub FuzzyNilai()
+        If Nilai.Text = "" Then
+            Nilai.Text = 0
+        End If
+
+        If Nilai.Text >= 0 And Nilai.Text <= 40 Then
+            NilaiKecil = (40 - Nilai.Text) / 40
+        Else
+            NilaiKecil = 0
+        End If
+
+        If Nilai.Text >= 35 And Nilai.Text <= 65 Then
+            If Nilai.Text >= 35 And Nilai.Text <= 45 Then
+                NilaiCukup = (Nilai.Text - 35) / 10
+            ElseIf Nilai.Text > 45 And Nilai.Text < 60 Then
+                NilaiCukup = 1
+            ElseIf Nilai.Text >= 55 And Nilai.Text <= 65 Then
+                NilaiCukup = (65 - Nilai.Text) / 10
+            End If
+        Else
+            NilaiCukup = 0
+        End If
+
+        If Nilai.Text >= 60 And Nilai.Text <= 100 Then
+            NilaiBesar = (Nilai.Text - 60) / 40
+        Else
+            NilaiBesar = 0
+        End If
+    End Sub
+
+    Dim DurasiPendek, DurasiSedang, DurasiPanjang As Decimal
+    Dim JBSedikit, JBSedang, JBBanyak As Decimal
+    Dim NilaiKecil, NilaiCukup, NilaiBesar As Decimal
+    Dim x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17 As Decimal
+    Dim x18, x19, x20, x21, x22, x23, x24, x25, x26, x27 As Decimal
+    Dim rule1 As Decimal = Decimal.MaxValue
+    Dim rule2 As Decimal = Decimal.MaxValue
+    Dim rule3 As Decimal = Decimal.MaxValue
+    Dim rule4 As Decimal = Decimal.MaxValue
+    Dim rule5 As Decimal = Decimal.MaxValue
+    Dim rule6 As Decimal = Decimal.MaxValue
+    Dim rule7 As Decimal = Decimal.MaxValue
+    Dim rule8 As Decimal = Decimal.MaxValue
+    Dim rule9 As Decimal = Decimal.MaxValue
+    Dim rule10 As Decimal = Decimal.MaxValue
+    Dim rule11 As Decimal = Decimal.MaxValue
+    Dim rule12 As Decimal = Decimal.MaxValue
+    Dim rule13 As Decimal = Decimal.MaxValue
+    Dim rule14 As Decimal = Decimal.MaxValue
+    Dim rule15 As Decimal = Decimal.MaxValue
+    Dim rule16 As Decimal = Decimal.MaxValue
+    Dim rule17 As Decimal = Decimal.MaxValue
+    Dim rule18 As Decimal = Decimal.MaxValue
+    Dim rule19 As Decimal = Decimal.MaxValue
+    Dim rule20 As Decimal = Decimal.MaxValue
+    Dim rule21 As Decimal = Decimal.MaxValue
+    Dim rule22 As Decimal = Decimal.MaxValue
+    Dim rule23 As Decimal = Decimal.MaxValue
+    Dim rule24 As Decimal = Decimal.MaxValue
+    Dim rule25 As Decimal = Decimal.MaxValue
+    Dim rule26 As Decimal = Decimal.MaxValue
+    Dim rule27 As Decimal = Decimal.MaxValue
+    Dim maximal As Decimal = Decimal.MinValue
+
+
+    Public Sub CariNilaiMax()
+        Dim vals1 As Decimal() = {rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10, rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20, rule21, rule22, rule23, rule24, rule25, rule26, rule27}
+
+        For Each element As Decimal In vals1
+            maximal = Math.Max(maximal, element)
+        Next
+
+        If maximal = rule1 Then
+            TP.Text = x1 / 2
+        ElseIf maximal = rule2 Then
+            TP.Text = x2
+        ElseIf maximal = rule3 Then
+            TP.Text = x3
+        ElseIf maximal = rule4 Then
+            TP.Text = x4 / 2
+        ElseIf maximal = rule5 Then
+            TP.Text = x5
+        ElseIf maximal = rule6 Then
+            TP.Text = x6
+        ElseIf maximal = rule7 Then
+            TP.Text = x7
+        ElseIf maximal = rule8 Then
+            TP.Text = (x8 + 100) / 2
+        ElseIf maximal = rule9 Then
+            TP.Text = (x9 + 100) / 2
+        ElseIf maximal = rule10 Then
+            TP.Text = x10 / 2
+
+        ElseIf maximal = rule11 Then
+            TP.Text = x11
+        ElseIf maximal = rule12 Then
+            TP.Text = x12
+        ElseIf maximal = rule13 Then
+            TP.Text = x13 / 2
+        ElseIf maximal = rule14 Then
+            TP.Text = x14
+        ElseIf maximal = rule15 Then
+            TP.Text = x15
+        ElseIf maximal = rule16 Then
+            TP.Text = x16
+        ElseIf maximal = rule17 Then
+            TP.Text = (x17 + 100) / 2
+        ElseIf maximal = rule18 Then
+            TP.Text = (x18 + 100) / 2
+        ElseIf maximal = rule19 Then
+            TP.Text = x19 / 2
+        ElseIf maximal = rule20 Then
+            TP.Text = x20 / 2
+
+        ElseIf maximal = rule21 Then
+            TP.Text = x21
+        ElseIf maximal = rule22 Then
+            TP.Text = x22 / 2
+        ElseIf maximal = rule23 Then
+            TP.Text = x23
+        ElseIf maximal = rule24 Then
+            TP.Text = x24
+        ElseIf maximal = rule25 Then
+            TP.Text = x25
+        ElseIf maximal = rule26 Then
+            TP.Text = x26
+        ElseIf maximal = rule27 Then
+            TP.Text = (x27 + 100) / 2
+        End If
+
+        If Val(TP.Text) < 50 Then
+            Deskripsi.Text = "Kurang"
+        ElseIf Val(TP.Text) = 50 Then
+            Deskripsi.Text = "Cukup"
+        ElseIf Val(TP.Text) > 50 Then
+            Deskripsi.Text = "Baik"
+        End If
+
+    End Sub
+
+    Private Sub R1()
+        Dim vals As Decimal() = {DurasiPendek, JBSedikit, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule1 = Math.Min(rule1, element)
+        Next
+
+        x1 = 75 - (rule1 * 75)
+    End Sub
+
+    Private Sub R2()
+        Dim vals As Decimal() = {DurasiPendek, JBSedikit, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule2 = Math.Min(rule2, element)
+        Next
+
+        x2 = 75 - (rule2 * 75)
+    End Sub
+
+    Private Sub R3()
+        Dim vals As Decimal() = {DurasiPendek, JBSedikit, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule3 = Math.Min(rule3, element)
+        Next
+
+        x3 = ((25 + (rule3 * 25)) + (75 - (rule3 * 25))) / 2
+    End Sub
+
+    Private Sub R4()
+        Dim vals As Decimal() = {DurasiPendek, JBSedang, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule4 = Math.Min(rule4, element)
+        Next
+
+        x4 = 75 - (rule4 * 75)
+    End Sub
+
+    Private Sub R5()
+        Dim vals As Decimal() = {DurasiPendek, JBSedang, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule5 = Math.Min(rule5, element)
+        Next
+
+        x5 = ((25 + (rule5 * 25)) + (75 - (rule5 * 25))) / 2
+    End Sub
+
+    Private Sub R6()
+        Dim vals As Decimal() = {DurasiPendek, JBSedang, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule6 = Math.Min(rule6, element)
+        Next
+
+        x6 = 25 + (rule6 * 75)
+    End Sub
+
+    Private Sub R7()
+        Dim vals As Decimal() = {DurasiPendek, JBBanyak, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule7 = Math.Min(rule7, element)
+        Next
+
+        x7 = ((25 + (rule7 * 25)) + (75 - (rule7 * 25))) / 2
+    End Sub
+
+    Private Sub R8()
+        Dim vals As Decimal() = {DurasiPendek, JBBanyak, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule8 = Math.Min(rule8, element)
+        Next
+
+        x8 = ((25 + (rule8 * 25)) + (75 - (rule8 * 25))) / 2
+    End Sub
+
+    Private Sub R9()
+        Dim vals As Decimal() = {DurasiPendek, JBBanyak, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule9 = Math.Min(rule9, element)
+        Next
+
+        x9 = 25 + (rule9 * 75)
+    End Sub
+
+    Private Sub R10()
+        Dim vals As Decimal() = {DurasiSedang, JBSedikit, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule10 = Math.Min(rule10, element)
+        Next
+
+        x10 = 75 - (rule10 * 75)
+    End Sub
+
+    Private Sub R11()
+        Dim vals As Decimal() = {DurasiSedang, JBSedikit, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule11 = Math.Min(rule11, element)
+        Next
+
+        x11 = 75 - (rule11 * 75)
+    End Sub
+
+    Private Sub R12()
+        Dim vals As Decimal() = {DurasiSedang, JBSedikit, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule12 = Math.Min(rule12, element)
+        Next
+
+        x12 = ((25 + (rule12 * 25)) + (75 - (rule12 * 25))) / 2
+    End Sub
+
+    Private Sub R13()
+        Dim vals As Decimal() = {DurasiSedang, JBSedang, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule13 = Math.Min(rule13, element)
+        Next
+
+        x13 = 75 - (rule13 * 75)
+    End Sub
+
+    Private Sub R14()
+        Dim vals As Decimal() = {DurasiSedang, JBSedang, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule14 = Math.Min(rule14, element)
+        Next
+
+        x14 = ((25 + (rule14 * 25)) + (75 - (rule14 * 25))) / 2
+    End Sub
+
+    Private Sub R15()
+        Dim vals As Decimal() = {DurasiSedang, JBSedang, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule15 = Math.Min(rule15, element)
+        Next
+
+        x15 = 25 + (rule15 * 75)
+    End Sub
+
+    Private Sub R16()
+        Dim vals As Decimal() = {DurasiSedang, JBBanyak, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule16 = Math.Min(rule16, element)
+        Next
+
+        x16 = ((25 + (rule16 * 25)) + (75 - (rule16 * 25))) / 2
+    End Sub
+
+    Private Sub R17()
+        Dim vals As Decimal() = {DurasiSedang, JBBanyak, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule17 = Math.Min(rule17, element)
+        Next
+
+        x17 = ((25 + (rule17 * 25)) + (75 - (rule17 * 25))) / 2
+    End Sub
+
+    Private Sub R18()
+        Dim vals As Decimal() = {DurasiSedang, JBBanyak, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule18 = Math.Min(rule18, element)
+        Next
+
+        x18 = 25 + (rule18 * 75)
+    End Sub
+
+    Private Sub R19()
+        Dim vals As Decimal() = {DurasiPanjang, JBSedikit, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule19 = Math.Min(rule19, element)
+        Next
+
+        x19 = 75 - (rule19 * 75)
+    End Sub
+
+    Private Sub R20()
+        Dim vals As Decimal() = {DurasiPanjang, JBSedikit, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule20 = Math.Min(rule20, element)
+        Next
+
+        x20 = 75 - (rule20 * 75)
+    End Sub
+
+    Private Sub R21()
+        Dim vals As Decimal() = {DurasiPanjang, JBSedikit, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule21 = Math.Min(rule21, element)
+        Next
+
+        x21 = ((25 + (rule21 * 25)) + (75 - (rule21 * 25))) / 2
+    End Sub
+
+    Private Sub R22()
+        Dim vals As Decimal() = {DurasiPanjang, JBSedang, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule22 = Math.Min(rule22, element)
+        Next
+
+        x22 = 75 - (rule22 * 75)
+    End Sub
+
+    Private Sub R23()
+        Dim vals As Decimal() = {DurasiPanjang, JBSedang, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule23 = Math.Min(rule23, element)
+        Next
+
+        x23 = ((25 + (rule23 * 25)) + (75 - (rule23 * 25))) / 2
+    End Sub
+
+    Private Sub R24()
+        Dim vals As Decimal() = {DurasiPanjang, JBSedang, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule24 = Math.Min(rule24, element)
+        Next
+
+        x24 = ((25 + (rule24 * 25)) + (75 - (rule24 * 25))) / 2
+    End Sub
+
+    Private Sub R25()
+        Dim vals As Decimal() = {DurasiPanjang, JBBanyak, NilaiKecil}
+
+        For Each element As Decimal In vals
+            rule25 = Math.Min(rule25, element)
+        Next
+
+        x25 = ((25 + (rule25 * 25)) + (75 - (rule25 * 25))) / 2
+    End Sub
+
+    Private Sub R26()
+        Dim vals As Decimal() = {DurasiPanjang, JBBanyak, NilaiCukup}
+
+        For Each element As Decimal In vals
+            rule26 = Math.Min(rule26, element)
+        Next
+
+        x26 = ((25 + (rule26 * 25)) + (75 - (rule26 * 25))) / 2
+    End Sub
+
+    Private Sub R27()
+        Dim vals As Decimal() = {DurasiPanjang, JBBanyak, NilaiBesar}
+
+        For Each element As Decimal In vals
+            rule27 = Math.Min(rule27, element)
+        Next
+
+        x27 = ((25 + (rule27 * 25)) + (75 - (rule27 * 25))) / 2
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        FuzzyDurasi() : FuzzyJB() : FuzzyNilai()
+
+        R1() : R2() : R3() : R4() : R5() : R6() : R7() : R8() : R9() : R10()
+        R11() : R12() : R13() : R14() : R15() : R16() : R17() : R18() : R19() : R20()
+        R21() : R22() : R23() : R24() : R25() : R26() : R27()
+
+        CariNilaiMax()
+        'MessageBox.Show("DurasiPendek : " & DurasiPendek & "" _
+        '& vbNewLine & "DurasiSedang : " & DurasiSedang & "" _
+        '& vbNewLine & "DurasiPanjang : " & DurasiPanjang & "" _
+        '& vbNewLine & "JBSedikit : " & JBSedikit & "" _
+        '& vbNewLine & "JBSedang : " & JBSedang & "" _
+        '& vbNewLine & "JBBanyak : " & JBBanyak & "" _
+        '& vbNewLine & "NilaiKecil : " & NilaiKecil & "" _
+        '& vbNewLine & "NilaiCukup : " & NilaiCukup & "" _
+        '& vbNewLine & "NilaiBesar : " & NilaiBesar & "")
+        MessageBox.Show(DurasiPendek _
+                        & vbNewLine & DurasiSedang _
+                        & vbNewLine & DurasiPanjang)
+
+        MessageBox.Show("R1 : " & rule1 & "" _
+        & vbNewLine & "R2 : " & rule2 & "" _
+        & vbNewLine & "R3 : " & rule3 & "" _
+        & vbNewLine & "R4 : " & rule4 & "" _
+        & vbNewLine & "R5 : " & rule5 & "" _
+        & vbNewLine & "R6 : " & rule6 & "" _
+        & vbNewLine & "R7 : " & rule7 & "" _
+        & vbNewLine & "R8 : " & rule8 & "" _
+        & vbNewLine & "R9 : " & rule9 & "" _
+        & vbNewLine & "R10 : " & rule10 & "" _
+        & vbNewLine & "R11 : " & rule11 & "" _
+        & vbNewLine & "R12 : " & rule12 & "" _
+        & vbNewLine & "R13 : " & rule13 & "" _
+        & vbNewLine & "R14 : " & rule14 & "" _
+        & vbNewLine & "R15 : " & rule15 & "" _
+        & vbNewLine & "R16 : " & rule16 & "" _
+        & vbNewLine & "R17 : " & rule17 & "" _
+        & vbNewLine & "R18 : " & rule18 & "" _
+        & vbNewLine & "R19 : " & rule19 & "" _
+        & vbNewLine & "R20 : " & rule20 & "" _
+        & vbNewLine & "R21 : " & rule21 & "" _
+        & vbNewLine & "R22 : " & rule22 & "" _
+        & vbNewLine & "R23 : " & rule23 & "" _
+        & vbNewLine & "R24 : " & rule24 & "" _
+        & vbNewLine & "R25 : " & rule25 & "" _
+        & vbNewLine & "R26 : " & rule26 & "" _
+        & vbNewLine & "R27 : " & rule27 & "" _
+        & vbNewLine & "maximal : " & maximal & "")
+
+    End Sub
+End Class

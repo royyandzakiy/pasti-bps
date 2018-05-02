@@ -1,10 +1,15 @@
 TODO:
-- hasil_tes
+- hasil_tes: hasil
 	- pemula <40
 	- menengah >=40 && <70
 	- baik >=70 && <90
 	- ahli >=90
+- hasil_tes: rekomendasi
+	- accept: kembali ke topik yg direkomendasikan
 - buat hasil_belajar > di SS
 - implementasi fuzzy logic
-- buat alur pada "change_page"
-	- gabisa pindah bab klo level_pengetahuan kurang
+- buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
+	- hanya bisa ke topik selanjutnya jika sudah pernah akses topik sebelumnya
+- buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
+	- bab 2: LP = 16
+	- bab 3: LP = 50

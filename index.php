@@ -10,14 +10,14 @@
     $konsep_aktif = $_SESSION['konsep_aktif'];
     $topik_aktif = $_SESSION['topik_aktif'];
 
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
+    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
     $result = $con->query($query);
 
     $row = $result->fetch(PDO::FETCH_NUM);
 
     $konsep_aktif_judul = $row[1];
     $topik_aktif_judul = $row[3];
-    $video_url_aktif = $row[5];
+    $video_url_aktif = $row[4];
 ?>
 
 <html !DOCTYPE>

@@ -1,7 +1,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <link href="css/radio_button_questions.css" rel="stylesheet" >
 
-<form action="scoring.php" method="post" name="pretest" id="pretest">
+<form action="scoring.php" method="post" name="pertayaantes" id="pertayaantes">
 <div class="col-md-12">
 <?php
     if (session_status() == PHP_SESSION_NONE) {
@@ -9,13 +9,17 @@
     }
 
     $_SESSION['test_datetime_start'] = date('m/d/Y h:i:s a', time());
+    $current_konsep = $_SESSION['konsep_aktif'];
 
     $query = "SELECT id_konsep, id_topik, id_test, id_question, weight, question, correct, A, B, C, D FROM " . $test_type;
     $result = $con->query($query);
 
     $rows = array();
     while($row = $result->fetch(PDO::FETCH_NUM)) {
-        array_push($rows, $row);
+        $row_konsep = $row[0];
+        if ( ($test_type == 'pertayaantes' && $row_konsep == $current_konsep) || $test_type == 'pretest') {
+            array_push($rows, $row);
+        }
     }
     
     shuffle($rows);

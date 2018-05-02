@@ -8,7 +8,9 @@
 ?>
 
 <html !DOCTYPE>
-    <?php require('head.php'); ?>
+    <?php 
+        require('head.php'); 
+    ?>
     
     <body>
     
@@ -23,6 +25,7 @@
     
             <?php
                 include('navbar.php');
+                echo "<h1>Tes Konsep - " . $_SESSION['konsep_aktif'] . "</h1>";
                 include('load_questions.php');
             ?>      
 

@@ -54,7 +54,7 @@
             <script>
             window.onload = function () {
             
-            var chart = new CanvasJS.Chart("chartContainer", {
+            var chartLP = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 theme: "light2",
                 title:{
@@ -78,7 +78,7 @@
                 }]
             });
             
-            chart.render();
+            chartLP.render();
             
             }
             </script>

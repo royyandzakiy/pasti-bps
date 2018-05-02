@@ -7,23 +7,30 @@
 
     sql_connect('pasti_db');
 
-    $konsep_aktif = $_SESSION['konsep_aktif'];
-    $topik_aktif = $_SESSION['topik_aktif'];
+    $konsep_aktif = $_GET['konsep_aktif'];
 
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
+    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi WHERE id_konsep = '$konsep_aktif'";
     $result = $con->query($query);
 
     $row = $result->fetch(PDO::FETCH_NUM);
 
     $konsep_aktif_judul = $row[1];
-    $topik_aktif_judul = $row[3];
-    $video_url_aktif = $row[5];
 
-    $dataPoints = array(
+    // ambil data Tingkat Pengetahuan
+    $dataPointsTP = array(
         array("x" => 1 , "y" => 75),
         array("x" => 2 , "y" => 20),
         array("x" => 3 , "y" => 100),
         array("x" => 4 , "y" => 0)
+    );
+
+    // ambil data Tingkat Pengetahuan
+    $dataPointsLP = array(
+        array("x" => 0 , "y" => 0),
+        array("x" => 1 , "y" => 25),
+        array("x" => 2 , "y" => 50),
+        array("x" => 3 , "y" => 60),
+        array("x" => 4 , "y" => 85)
     );
 ?>
 
@@ -45,15 +52,22 @@
                 include('navbar.php');
             ?>  
 
-            <select>
-                <option value="Tingkat Penguasaan" selected>Tingkat Penguasaan</option>
-                <option value="Level Pengetahuan">Level Pengetahuan</option>
-            </select>
+            <h1>Konsep - <?= $konsep_aktif ?></h1>
 
-            <script>
-            window.onload = function () {
-            
-            var chart = new CanvasJS.Chart("chartContainer", {
+            Tingkat Penguasaan
+            <div id="chartContainerTP" style="height: 370px; width: 100%;"></div>
+            <br />
+            Level Pengetahuan
+            <div id="chartContainerLP" style="height: 370px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            var chartTP = new CanvasJS.Chart("chartContainerTP", {
                 animationEnabled: true,
                 theme: "light2",
                 title:{
@@ -72,24 +86,37 @@
                 data: [{
                     type: "splineArea",
                     indexLabelFontColor: "#5A5757",
-		            indexLabelPlacement: "outside",  
-                    dataPoints: <?php echo json_encode($dataPoints); ?>
+                    indexLabelPlacement: "outside",  
+                    dataPoints: <?php echo json_encode($dataPointsTP); ?>
                 }]
             });
-            
-            chart.render();
-            
-            }
-            </script>
 
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        </div>
-    </div>
+            chartTP.render();
 
-
-    <script>
-        $(document).ready(function () {
+            var chartLP = new CanvasJS.Chart("chartContainerLP", {
+                animationEnabled: true,
+                theme: "light2",
+                title:{
+                    text: ""
+                },
+                axisX: {
+                    title: "BAB",
+                    minimum: 0,
+                    maximum: 4,
+                    interval: 1
+                },
+                axisY: {
+                    title: "Level Pengetahuan",
+                    maximum: 100
+                },
+                data: [{
+                    type: "splineArea",
+                    indexLabelFontColor: "#5A5757",
+                    indexLabelPlacement: "outside",  
+                    dataPoints: <?php echo json_encode($dataPointsLP); ?>
+                }]
+            });
+            chartLP.render();
 
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');

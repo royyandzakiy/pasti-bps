@@ -18,6 +18,8 @@
     $konsep_aktif_judul = $row[1];
     $topik_aktif_judul = $row[3];
     $video_url_aktif = $row[4];
+
+    // header('location:test.php');
 ?>
 
 <html !DOCTYPE>

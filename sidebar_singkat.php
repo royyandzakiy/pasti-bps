@@ -24,7 +24,7 @@
 
             echo('
                 <li class="active">
-                            <a href="?konsep='.$row[0].'">'.$crnt_judul.'</a>
+                            <a href="?konsep_aktif='.$row[0].'">'.$crnt_judul.'</a>
             ');
 
             while($row = $result->fetch(PDO::FETCH_NUM)) {
@@ -34,7 +34,7 @@
                     echo (
                             '</li>
                         <li class="active">
-                            <a href="?konsep='.$row[0].'">'.$crnt_judul.'</a>'
+                            <a href="?konsep_aktif='.$row[0].'">'.$crnt_judul.'</a>'
                     );
                 }
             }

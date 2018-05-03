@@ -1,4 +1,7 @@
 TODO:
+- signup
+	- usia: TTL (validasi input: paling tua 55th.)
+	- masa kerja (dari tahun masuk BPS, validasi input: max tahun ini, gamungkin dr 70an)
 - hasil_tes: hasil
 	- pemula <40
 	- menengah >=40 && <70

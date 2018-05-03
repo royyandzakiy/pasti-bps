@@ -151,7 +151,7 @@
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">NIP</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="NIP" placeholder="NIP">
+                                        <input id="register-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit" maxlength="5">
                                     </div>
                                 </div>                                
                                   
@@ -176,6 +176,23 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label class='col-md-3 control-label' id='datetimepicker1'>Tanggal Lahir</label>
+                                    <div class="col-md-9">
+                                        <input type='date' class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="gender" class="col-md-3 control-label">Jenis Kelamin</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" name="gender" placeholder="gender">
+                                            <option>Laki-laki</option>
+                                            <option>Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="pendidikan" class="col-md-3 control-label">Pendidikan</label>
                                     <div class="col-md-9">
                                         <select class="form-control" name="pendidikan" placeholder="Pendidikan">
@@ -189,7 +206,7 @@
                                 <div class="form-group">
                                     <label for="tahun_masuk" class="col-md-3 control-label">Tahun Masuk BPS?</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" name="tahun_masuk" type="number" value="2018" />
+                                        <input class="form-control" name="tahun_masuk" type="number" value="<?= date("Y"); ?>" max="<?= date("Y"); ?>" />
                                     </div>
                                 </div>
 

@@ -9,15 +9,24 @@
 
     $konsep_aktif = $_SESSION['konsep_aktif'];
     $topik_aktif = $_SESSION['topik_aktif'];
+    $id_siswa = $_SESSION['nip'];
 
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
+    // GET MATERI
+    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
     $result = $con->query($query);
-
     $row = $result->fetch(PDO::FETCH_NUM);
 
     $konsep_aktif_judul = $row[1];
-    $topik_aktif_judul = $row[3];
-    $video_url_aktif = $row[5];
+
+    // GET HASIL PENGERJAAN
+    $query = "SELECT id_siswa, id_tes, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $konsep_aktif";
+    $result = $con->query($query);
+    $row = $result->fetch(PDO::FETCH_NUM);
+
+    $durasi = $row[3];
+    $jawaban_benar = $row[4];
+    $nilai = $row[5];
+    $tingkat_penguasaan = $row[6];
 ?>
 
 <html !DOCTYPE>
@@ -39,43 +48,46 @@
             ?>
     
             <h4>
-                <small><?php echo "Bab " . $konsep_aktif . " - " . $konsep_aktif_judul; ?></small>
+                <small><?php echo "Konsep " . $konsep_aktif . " - " . $konsep_aktif_judul; ?></small>
             </h4>
             <hr />
             <h2>Baik!</h2>
             <table>
                 <tr>
-                    <th>Tingkat Penguasaan</th>
-                    <th>:</th>
-                    <th>81</th>
-                    <th>(0-100)</th>
+                    <td>Tingkat Penguasaan</td>
+                    <td style="padding:0 10px;">:</td>
+                    <td><?= $tingkat_penguasaan ?> (0-100)</td>
                 </tr>
                 <tr>
                     <td>Nilai</td>
-                    <td>:</td>
-                    <td>78</td>
-                    <td>(0-100)</td>
+                    <td style="padding:0 10px;">:</td>
+                    <td><?= $nilai ?> (0-100)</td>
                 </tr>
                 <tr>
                     <td>Jawaban Benar</td>
-                    <td>:</td>
-                    <td>16</td>
-                    <td>(0-20)</td>
+                    <td style="padding:0 10px;">:</td>
+                    <td><?= $jawaban_benar ?> (0-20)</td>
                 </tr>
                 <tr>
                     <td>Durasi</td>
-                    <td>:</td>
-                    <td>12</td>
-                    <td>Menit</td>
+                    <td style="padding:0 10px;">:</td>
+                    <td><?= $durasi ?> Menit</td>
                 </tr>
             </table>
             Jawaban Salah:
             <ol>
-                <li>Pertanyaan 1
-                    <div>Jawaban benar: Jawaban</div>
-                </li><li>Pertanyaan 2
-                    <div>Jawaban benar: Jawaban</div>
-                </li>
+                <?php
+                    $rekap_salah = $_SESSION['rekap_salah'];
+                    unset($_SESSION['rekap_salah']);
+
+                    foreach ($rekap_salah as $salah) {
+                        echo('
+                            <li><b>Pertanyaan:</b> ' . $salah["question"] . '
+                            <div>Jawaban benar: <span style="color:#3ad43a;">'. $salah["correct"] .'</span></div>
+                            </li>
+                        ');
+                    }
+                ?>
             </ol>
 
             PASTI merekomendasikan untuk mempelajari ulang topik:
@@ -88,10 +100,8 @@
             Untuk menerima rekomendasi dari PASTI, klik "Accept", Jika menolak klik "Decline"
             
             <hr />
-            <a href="change_page.php?goto=back"><button type="submit" class="btn btn-default">Back</button></a>
-            <a href="change_page.php?goto=next"><button type="submit" class="btn btn-primary">Next</button></a>
-            <!-- <a href="change_page.php?goto=<?= $konsep_aktif ?>&goto_topik=0<?= ((int) $topik_aktif) > 1 ? (int) $topik_aktif - 1 : (int) $topik_aktif ?>"><button type="submit" class="btn btn-default">Back</button></a>
-            <a href="change_page.php?goto=<?= $konsep_aktif ?>&goto_topik=0<?= ((int) $topik_aktif) > 1 ? (int) $topik_aktif - 1 : (int) $topik_aktif ?>"><button type="submit" class="btn btn-default">Back</button></a> -->
+            <a href="change_page.php?goto=back"><button type="submit" class="btn btn-default">Decline</button></a>
+            <a href="change_page.php?goto=next"><button type="submit" class="btn btn-primary">Accept</button></a>
         </div>
     </div>
 

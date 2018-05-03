@@ -5,6 +5,14 @@
     if(isset($_SESSION['logged_in'])) {
         $konsep_terakhir = $_SESSION['konsep_terakhir'];
         $topik_terakhir = $_SESSION['topik_terakhir'];
+
+        // GET TINGKAT PENGUASAAN
+        $tingkat_penguasaan_array = [0,0,0];
+        $query = "SELECT id_tes, tingkat_penguasaan FROM konseptes WHERE id_siswa = $id_siswa";
+        $result = $con->query($query);
+        while ($row = $result->fetch(PDO::FETCH_NUM)) {
+            $tingkat_penguasaan_array[$row[0] - 1] = $row[1];
+        }
     }
 ?>
 
@@ -55,26 +63,34 @@
             <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download materi</a>
         </li>
         <li>
-            <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Hasil belajar</a>
+            <a href="hasil_belajar.php" class="article">Hasil belajar</a>
         </li>
     </ul>
 
     <div id="tingkat_penguasaan">
-        <h4>Tingkat Penguasaan (BELUM AKTIF)</h4>
-        BAB 1. Interactive Learning
+        <h4>Tingkat Penguasaan</h4>
+        BAB 1. Pengenalan Survei Tahunan Industri
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60"
-            aria-valuemin="0" aria-valuemax="100" style="width:60%"}>
-            60% Dikuasai
-            </div>
+            <div class="progress-bar progress-bar-default progress-bar-striped" role="progressbar" aria-valuenow="<?= $tingkat_penguasaan_array[0] ?>"
+            aria-valuemin="0" aria-valuemax="100" style="width:<?= $tingkat_penguasaan_array[0] ?>%">
+            <?php echo ($tingkat_penguasaan_array[0] > 50 ? $tingkat_penguasaan_array[0] . "% Dikuasai" : "") ?>
+            </div><span style="color:#337ab7;"><?php echo ($tingkat_penguasaan_array[0] <= 50 ? $tingkat_penguasaan_array[0] . "% Dikuasai" : "") ?></span>
         </div>
 
-        BAB 2. Adaptive Learning
+        BAB 2. Updating Direktori
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="96"
-            aria-valuemin="0" aria-valuemax="100" style="width:96%">
-            96% Dikuasai
-            </div>
+            <div class="progress-bar progress-bar-default progress-bar-striped" role="progressbar" aria-valuenow="<?= $tingkat_penguasaan_array[1] ?>"
+            aria-valuemin="0" aria-valuemax="100" style="width:<?= $tingkat_penguasaan_array[1] ?>%">
+            <?php echo ($tingkat_penguasaan_array[1] > 50 ? $tingkat_penguasaan_array[1] . "% Dikuasai" : "") ?>
+            </div><span style="color:#337ab7;"><?php echo ($tingkat_penguasaan_array[1] <= 50 ? $tingkat_penguasaan_array[1] . "% Dikuasai" : "") ?></span>
+        </div>
+        
+        BAB 3. Pedoman Pencacahan II-A
+        <div class="progress">
+            <div class="progress-bar progress-bar-default progress-bar-striped" role="progressbar" aria-valuenow="<?= $tingkat_penguasaan_array[2] ?>"
+            aria-valuemin="0" aria-valuemax="100" style="width:<?= $tingkat_penguasaan_array[2] ?>%">
+            <?php echo ($tingkat_penguasaan_array[2] > 50 ? $tingkat_penguasaan_array[2] . "% Dikuasai" : "") ?>
+            </div><span style="color:#337ab7;"><?php echo ($tingkat_penguasaan_array[2] <= 50 ? $tingkat_penguasaan_array[2] . "% Dikuasai" : "") ?></span>
         </div>
     </div>
 </nav>

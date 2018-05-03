@@ -7,30 +7,33 @@
 
     sql_connect('pasti_db');
 
-    $konsep_aktif = $_GET['konsep_aktif'];
-
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi WHERE id_konsep = '$konsep_aktif'";
+    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi";
     $result = $con->query($query);
-
     $row = $result->fetch(PDO::FETCH_NUM);
 
-    $konsep_aktif_judul = $row[1];
+    $id_siswa = $_SESSION['nip'];
 
-    // ambil data Tingkat Pengetahuan
+    $tingkat_penguasaan_array = [80,50,0];
+    $query = "SELECT id_tes, tingkat_penguasaan FROM konseptes WHERE id_siswa = $id_siswa";
+    $result = $con->query($query);
+    while ($row = $result->fetch(PDO::FETCH_NUM)) {
+        $tingkat_penguasaan_array[$row[0] - 1] = $row[1];
+    }
+
+    // ambil data Tingkat Penguasaan
     $dataPointsTP = array(
-        array("x" => 1 , "y" => 75),
-        array("x" => 2 , "y" => 20),
-        array("x" => 3 , "y" => 100),
-        array("x" => 4 , "y" => 0)
+        array("x" => 0 , "y" => 0),
+        array("x" => 1 , "y" => 80),
+        array("x" => 2 , "y" => 50),
+        array("x" => 3 , "y" => (int) $tingkat_penguasaan_array[2])
     );
 
-    // ambil data Tingkat Pengetahuan
+    // ambil data Level Pengetahuan
     $dataPointsLP = array(
         array("x" => 0 , "y" => 0),
-        array("x" => 1 , "y" => 25),
-        array("x" => 2 , "y" => 50),
-        array("x" => 3 , "y" => 60),
-        array("x" => 4 , "y" => 85)
+        array("x" => 1 , "y" => 80 * .20),
+        array("x" => 2 , "y" => 80 * .20 + 50 * .40),
+        array("x" => 3 , "y" => (int) $tingkat_penguasaan_array[0] * .20 + (int) $tingkat_penguasaan_array[1] * .40 + (int) $tingkat_penguasaan_array[2] * .40),
     );
 ?>
 
@@ -52,8 +55,6 @@
                 include('navbar.php');
             ?>  
 
-            <h1>Konsep - <?= $konsep_aktif ?></h1>
-
             Tingkat Penguasaan
             <div id="chartContainerTP" style="height: 370px; width: 100%;"></div>
             <br />
@@ -74,9 +75,9 @@
                     text: ""
                 },
                 axisX: {
-                    title: "BAB",
-                    minimum: 1,
-                    maximum: 4,
+                    title: "Konsep",
+                    minimum: 0,
+                    maximum: 3,
                     interval: 1
                 },
                 axisY: {
@@ -100,9 +101,9 @@
                     text: ""
                 },
                 axisX: {
-                    title: "BAB",
+                    title: "Konsep",
                     minimum: 0,
-                    maximum: 4,
+                    maximum: 3,
                     interval: 1
                 },
                 axisY: {

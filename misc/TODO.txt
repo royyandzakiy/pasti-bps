@@ -2,12 +2,14 @@ TODO:
 - signup
 	- usia: TTL (validasi input: paling tua 55th.)
 	- masa kerja (dari tahun masuk BPS, validasi input: max tahun ini, gamungkin dr 70an)
-- hasil_tes: hasil
+x hasil_tes: hasil
 	- pemula <40
 	- menengah >=40 && <70
 	- baik >=70 && <90
 	- ahli >=90
 - hasil_tes: rekomendasi
+	- muncul klo ada 1 saja dari topik terkait yg salah pengerjaannya
+	- menentukan change_page
 	- accept: kembali ke topik yg direkomendasikan
 - buat hasil_belajar > di SS
 - implementasi fuzzy logic

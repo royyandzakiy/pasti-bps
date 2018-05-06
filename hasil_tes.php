@@ -51,7 +51,17 @@
                 <small><?php echo "Konsep " . $konsep_aktif . " - " . $konsep_aktif_judul; ?></small>
             </h4>
             <hr />
-            <h2>Baik!</h2>
+            <h2><?php 
+                if ($tingkat_penguasaan < 40) {
+                    echo "Pemula";
+                } else if ($tingkat_penguasaan >= 40 && $tingkat_penguasaan <70) {
+                    echo "Menengah";
+                } else if ($tingkat_penguasaan >= 70 && $tingkat_penguasaan < 90) {
+                    echo "Baik!";
+                } else {
+                    echo "Ahli!";
+                }
+            ?></h2>
             <table>
                 <tr>
                     <td>Tingkat Penguasaan</td>

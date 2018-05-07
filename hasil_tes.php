@@ -120,7 +120,7 @@
                             } 
                             else 
                             {
-                                echo "<li>" . $row[3] . "</ li>";
+                                echo "<li><span style='color:red;'>" . $row[3] . "</span></ li>";
                             }
                         }
                     }

@@ -8,9 +8,10 @@ x hasil_tes: hasil
 	- baik >=70 && <90
 	- ahli >=90
 - hasil_tes: rekomendasi
+	- dari soal salah, tampilkan kode topik tiap soal
 	- muncul klo ada 1 saja dari topik terkait yg salah pengerjaannya
 	- menentukan change_page
-	- accept: kembali ke topik yg direkomendasikan
+	- accept: menuju ke topik yg direkomendasikan
 - buat hasil_belajar > di SS
 - implementasi fuzzy logic
 - buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)

@@ -7,7 +7,7 @@
 
     sql_connect('pasti_db');
 
-    echo $_GET['goto'];    
+    echo $_GET['goto'];   
 
     $list_konseptopik = ['0101','0102','0103','0201','0202','0203','0204','0205','0206','0207','0301','0302','0303','0304','0305','0306'];
     $list_konseptopik_tes = ['0103','0207','0306'];
@@ -47,8 +47,7 @@
         $_SESSION['topik_aktif'] = substr($goto,2,2);
     }
 
-    // tambah hitungan bahwa telah melewati materi
-    // ..
+    echo $goto;
 
     // periksa jika tipe laman adalah tes
     $not_test = array_search($goto,$list_konseptopik_tes) === false;

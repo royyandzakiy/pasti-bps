@@ -18,6 +18,13 @@
 
     $konsep_aktif_judul = $row[1];
 
+    // GET LEVEL PENGUASAAN
+    $query = "SELECT level_kemampuan FROM users WHERE nip = $id_siswa";
+    $result = $con->query($query);
+    $row = $result->fetch(PDO::FETCH_NUM);
+
+    $level_pengetahuan = $row[0];
+
     // GET HASIL PENGERJAAN
     $query = "SELECT id_siswa, id_tes, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $konsep_aktif";
     $result = $con->query($query);
@@ -102,6 +109,8 @@
                             array_push($topik_salah, $salah["id_topik"]);
                         }
                     }
+
+                    $_SESSION['topik_salah'] = $topik_salah;
                     
                     ?>
             </ol>
@@ -133,8 +142,20 @@
             Untuk menerima rekomendasi dari PASTI, klik "Accept", Jika menolak klik "Decline"
             
             <hr />
-            <a href="change_page.php?goto=back"><button type="submit" class="btn btn-default">Decline</button></a>
-            <a href="change_page.php?goto=next"><button type="submit" class="btn btn-primary">Accept</button></a>
+            <?php
+                if ($_SESSION['konsep_aktif'] == '01') {
+                    if ($level_pengetahuan >= 16.0) {
+                        $_SESSION['konsep_aktif'] = '02';
+                    }
+                } else if ($_SESSION['konsep_aktif'] == '02') {
+                    if ($level_pengetahuan >= 50.0) {
+                        $_SESSION['konsep_aktif'] = '03';
+                    }
+                }
+                $goto = $_SESSION['konsep_aktif'] . '01';
+            ?>
+            <a href="change_page.php?goto=<?= $goto ?>"><button type="submit" class="btn btn-default">Decline</button></a>
+            <a href="rekomendasi.php?rekomendasi=0"><button type="submit" class="btn btn-primary">Accept</button></a>
         </div>
     </div>
 

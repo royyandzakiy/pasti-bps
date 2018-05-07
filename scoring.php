@@ -164,7 +164,8 @@
     echo "TOTAL MENIT: " . $durasi . " menit<br />";
     //---END_DEBUG
 
-    header('location:hasil_tes.php?_id='.$_id);
+    echo '$_id = ' . $_id;
+    // header('location:hasil_tes.php?_id='.$_id);
 ?>
 
 <a href="hasil_tes.php?_id=<?= $_id ?>"><button class="btn">Back</button></a>

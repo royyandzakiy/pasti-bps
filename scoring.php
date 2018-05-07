@@ -70,7 +70,8 @@
                 
                 $rekap_salah_obj = array(
                     'question' => $row[5],
-                    'correct' => $row[6]
+                    'correct' => $row[6],
+                    'id_topik' => $row[1]
                 );
                 array_push($rekap_salah, $rekap_salah_obj);
             } 

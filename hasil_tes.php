@@ -90,21 +90,44 @@
                     $rekap_salah = $_SESSION['rekap_salah'];
                     unset($_SESSION['rekap_salah']);
 
+                    $topik_salah = array();
+
                     foreach ($rekap_salah as $salah) {
                         echo('
                             <li><b>Pertanyaan:</b> ' . $salah["question"] . '
                             <div>Jawaban benar: <span style="color:#3ad43a;">'. $salah["correct"] .'</span></div>
                             </li>
                         ');
+                        if (array_search($salah["id_topik"], $topik_salah) === false) {
+                            array_push($topik_salah, $salah["id_topik"]);
+                        }
                     }
-                ?>
+                    
+                    ?>
             </ol>
 
             PASTI merekomendasikan untuk mempelajari ulang topik:
             <ol>
-                <li>Kuisioner Updating Perusahaan
-                </li><li>Kuisioner II-B
-                </li>
+            <?php
+                $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, video_url FROM materi";
+                $result = $con->query($query);
+
+                if (sizeof($topik_salah) !== 0) {
+                    while ($row = $result->fetch(PDO::FETCH_NUM)) {
+                        if ($row[0] == $_SESSION['konsep_aktif']) {
+                            if (array_search(substr($row[2],1,3), $topik_salah) === false) {
+                                // do nothing...
+                            } 
+                            else 
+                            {
+                                echo "<li>" . $row[3] . "</ li>";
+                            }
+                        }
+                    }
+                } else {
+                    echo "<span style='color:grey'>Tidak ada rekomendasi</span>";
+                }              
+            ?>
             </ol>
 
             Untuk menerima rekomendasi dari PASTI, klik "Accept", Jika menolak klik "Decline"

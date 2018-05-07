@@ -14,7 +14,7 @@
 
     // cari tahu halaman sebelum atau setelah ini apa
     $goto;
-
+    
         $konsep_aktif = $_SESSION['konsep_aktif'];
         $topik_aktif = $_SESSION['topik_aktif'];
         $konseptopik_aktif = $konsep_aktif . $topik_aktif;
@@ -57,4 +57,5 @@
     } else {
         header('location:test.php');
     }
+    //*/
 ?>

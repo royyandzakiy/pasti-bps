@@ -66,11 +66,11 @@
         ?>
 
     <ul class="list-unstyled CTAs">
+        <!-- <li>
+            <a href="#" class="download">Download materi</a>
+        </li> -->
         <li>
-            <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download materi</a>
-        </li>
-        <li>
-            <a href="hasil_belajar.php" class="article">Hasil belajar</a>
+            <a href="hasil_belajar.php" class="download">Hasil belajar</a>
         </li>
     </ul>
 

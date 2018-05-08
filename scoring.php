@@ -3,6 +3,8 @@
     sql_connect('pasti_db');
     require('head.php');
 
+    echo var_dump($_POST);
+
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -34,6 +36,8 @@
     $rekap = array(); // TOTAL SCORE 
     $rekap_salah = array();
     $nilai = 0;
+
+    $nomor = 1;
     while($row = $result->fetch(PDO::FETCH_NUM)) {
         $row_konsep     = ($row[0] < 10 ? '0'.$row[0] : $row[0]);
         $id_topik       = ('0' . $row[1]);
@@ -55,7 +59,9 @@
         if(!isset($_POST['q-'.$id_test.$id_question])) $_POST['q-'.$id_test.$id_question] = "";
         
         // CHECK IF ANSWER CORRECT
-        if ( ($test_type == 'pertayaantes' && $row_konsep == $konsep_aktif) || $test_type == 'pretest') {
+        if ( ($test_type == 'pertayaantes' && $row_konsep == $konsep_aktif) || $test_type == 'pretest') {   
+            echo $nomor . ". ";
+            echo $row[6] , " === " . $_POST['q-'.$id_test.$id_question] . "<br />";
             $correct = $row[6] == $_POST['q-'.$id_test.$id_question] ? 1 : 0;
             array_push($rekap, $correct);
 
@@ -79,13 +85,13 @@
             echo "<br/>";
             //---END_DEBUG
         }
+        $nomor++;
     }
 
     $_SESSION['rekap_salah'] = $rekap_salah;
 
     // FUZZY LOGIC HERE
-    // ...
-    $tingkat_penguasaan = 0;
+    $tingkat_penguasaan = file_get_contents("http://localhost/My-projects/pasti/misc/fuzzy_logic.php?durasi=$durasi&jb=$jawaban_benar&nilai=$nilai");
 
     // DB: TOPIKTES
         // CHECK IF DATA TOPIKTEST EXISTS
@@ -160,8 +166,6 @@
             // berhasil!
             echo "INSERT NILAI $hasil BERHASIL<br/>";
         }
-    
-    $tingkat_penguasaan = file_get_contents("http://localhost/My-projects/pasti/misc/fuzzy_logic.php?durasi=$durasi&jb=$jawaban_benar&nilai=$nilai");
 
     //---DEBUG
     echo "JB: ".$jawaban_benar."<br/>";
@@ -172,7 +176,7 @@
     echo '$_id = ' . $_id . '<br/>';
     //---END_DEBUG
 
-    header('location:hasil_tes.php?_id='.$_id);
+    // header('location:hasil_tes.php?_id='.$_id);
 ?>
 
 <a href="hasil_tes.php?_id=<?= $_id ?>"><button class="btn">Next</button></a>

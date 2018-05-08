@@ -16,6 +16,6 @@ x hasil_tes: rekomendasi
 - implementasi fuzzy logic
 - buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
 	- hanya bisa ke topik selanjutnya jika sudah pernah akses topik sebelumnya
-- buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
+x buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
 	- bab 2: LP = 16
 	- bab 3: LP = 50

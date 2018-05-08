@@ -1,6 +1,7 @@
 <?php
     require('blog_connect.php'); 
     sql_connect('pasti_db');
+    require('head.php');
 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -122,7 +123,10 @@
             $query = "INSERT INTO konseptes (id_siswa, id_tes, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes) VALUES ($id_siswa, $konsep_aktif, $bobot_tes, $durasi, $jawaban_benar, $nilai, $tingkat_penguasaan, $jumlah_tes)";
             $result = $con->query($query);
 
-            $_id = $con->lastInsertId;
+            $query = "SELECT id FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $konsep_aktif";;
+            $result = $con->query($query);
+            $row = $result->fetch(PDO::FETCH_NUM);
+            $_id = $row[0];
         }
     
     // DB: RIWAYAT KONSEP
@@ -156,16 +160,19 @@
             // berhasil!
             echo "INSERT NILAI $hasil BERHASIL<br/>";
         }
+    
+    $tingkat_penguasaan = file_get_contents("http://localhost/My-projects/pasti/misc/fuzzy_logic.php?durasi=$durasi&jb=$jawaban_benar&nilai=$nilai");
 
     //---DEBUG
-    echo "JUMLAH BENAR TOTAL: ".$jawaban_benar."<br/>";
-    echo "TOTAL SCORE: ".$nilai." (Total dari Soal Benar * Bobot Soal)<br/>";
+    echo "JB: ".$jawaban_benar."<br/>";
+    echo "NILAI: " . $nilai . " (Total dari Soal Benar * Bobot Soal)<br/>";
+    echo "DURASI: " . $durasi . " menit<br />";
+    echo "TP: " . $tingkat_penguasaan . "<br />";
     echo "TOTAL WAKTU: " . $interval_h, " hours, ", $interval_m, " minutes, ", $interval_s, " seconds<br/>"; // debug
-    echo "TOTAL MENIT: " . $durasi . " menit<br />";
+    echo '$_id = ' . $_id . '<br/>';
     //---END_DEBUG
 
-    echo '$_id = ' . $_id;
-    // header('location:hasil_tes.php?_id='.$_id);
+    header('location:hasil_tes.php?_id='.$_id);
 ?>
 
 <a href="hasil_tes.php?_id=<?= $_id ?>"><button class="btn">Next</button></a>

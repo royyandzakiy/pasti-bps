@@ -16,7 +16,7 @@
     <ul class="list-unstyled components">
 
         <?php
-            $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status FROM materi";
+            $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik FROM materi";
             $result = $con->query($query);
 
             $row = $result->fetch(PDO::FETCH_NUM);

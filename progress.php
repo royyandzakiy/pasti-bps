@@ -7,7 +7,7 @@
 
     sql_connect('pasti_db');
 
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi";
+    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, video_url FROM materi";
     $result = $con->query($query);
     $row = $result->fetch(PDO::FETCH_NUM);
 

@@ -32,7 +32,7 @@
             $_SESSION['nama'] = $row[1];
             $_SESSION['pengalaman_survei'] = $row[2];
             $_SESSION['pengalaman_SIBS'] = $row[3];
-            $_SESSION['level_kemampuan'] = $row[4];
+            $_SESSION['level_pengetahuan'] = $row[4];
             // tentukan bakal buka materi mana
             $_SESSION['konsep_terakhir'] = $row[5];
             $_SESSION['topik_terakhir'] = $row[6];
@@ -139,7 +139,7 @@
                             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Login</a></div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form">
+                            <form id="signupform" class="form-horizontal" role="form" method="post" action="register.php">
                                 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
@@ -149,21 +149,21 @@
                                 
                                   
                                 <div class="form-group">
-                                    <label for="email" class="col-md-3 control-label">NIP</label>
+                                    <label for="NIP" class="col-md-3 control-label">NIP</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="NIP" placeholder="NIP">
+                                        <input type="text" class="form-control" name="NIP" placeholder="NIP 5 Digit" maxlength="5">
                                     </div>
                                 </div>                                
                                   
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="Email Address">
+                                        <input type="email" class="form-control" name="email" placeholder="Alamat Email">
                                     </div>
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="firstname" class="col-md-3 control-label">Nama Lengkap</label>
+                                    <label for="nama" class="col-md-3 control-label">Nama Lengkap</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap">
                                     </div>
@@ -183,6 +183,13 @@
                                             <option>SMP</option>
                                             <option>SMA</option>
                                         </select>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label for="tanggal_lahir" class="col-md-3 control-label">Tanggal Lahir</label>
+                                    <div class="col-md-9">
+                                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="">
                                     </div>
                                 </div>
 
@@ -216,7 +223,7 @@
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button name="daftar" id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Daftar</button>
+                                        <input id="btn-signup" href="#" class="btn btn-info" value="Daftar" name="daftar" type="submit" />
                                         <a onClick="$('#signupbox').hide(); $('#loginbox').show()"><button name="daftar" id="back-signin" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Kembali ke Login</button></a>
                                     </div>
                                 </div>

@@ -10,6 +10,7 @@
     $konsep_aktif = $_SESSION['konsep_aktif'];
     $topik_aktif = $_SESSION['topik_aktif'];
     $id_siswa = $_SESSION['nip'];
+    $id_konseptes = $_GET['_id'];
 
     // GET MATERI
     $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
@@ -26,7 +27,7 @@
     $level_pengetahuan = $row[0];
 
     // GET HASIL PENGERJAAN
-    $query = "SELECT id_siswa, id_tes, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $konsep_aktif";
+    $query = "SELECT id_siswa, id_tes, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id = $id_konseptes";
     $result = $con->query($query);
     $row = $result->fetch(PDO::FETCH_NUM);
 
@@ -95,7 +96,6 @@
             <ol>
                 <?php
                     $rekap_salah = $_SESSION['rekap_salah'];
-                    unset($_SESSION['rekap_salah']);
 
                     $topik_salah = array();
 
@@ -145,14 +145,19 @@
             <?php
                 if ($_SESSION['konsep_aktif'] == '01') {
                     if ($level_pengetahuan >= 16.0) {
-                        $_SESSION['konsep_aktif'] = '02';
+                        $konsep_aktif = '02';
                     }
                 } else if ($_SESSION['konsep_aktif'] == '02') {
                     if ($level_pengetahuan >= 50.0) {
-                        $_SESSION['konsep_aktif'] = '03';
+                        $konsep_aktif = '03';
                     }
                 }
-                $goto = $_SESSION['konsep_aktif'] . '01';
+                $topik_aktif = '01';
+                
+                $_SESSION['konsep_aktif'] = $konsep_aktif;
+                $_SESSION['topik_aktif'] = $topik_aktif;
+
+                $goto = $konsep_aktif . $topik_aktif;
             ?>
             <a href="change_page.php?goto=<?= $goto ?>"><button type="submit" class="btn btn-default">Decline</button></a>
             <a href="rekomendasi.php?rekomendasi=0"><button type="submit" class="btn btn-primary">Accept</button></a>

@@ -12,9 +12,9 @@ x hasil_tes: rekomendasi
 	- muncul klo ada 1 saja dari topik terkait yg salah pengerjaannya
 	- menentukan change_page
 	- accept: menuju ke topik yg direkomendasikan
-- buat hasil_belajar > di SS
-- implementasi fuzzy logic
-- buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
+x buat hasil_belajar > di SS
+x implementasi fuzzy logic
+x buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
 	- hanya bisa ke topik selanjutnya jika sudah pernah akses topik sebelumnya
 x buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
 	- bab 2: LP = 16

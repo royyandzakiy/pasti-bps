@@ -19,3 +19,4 @@ x hasil_tes: rekomendasi
 x buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
 	- bab 2: LP = 16
 	- bab 3: LP = 50
+- scoring: fix error, insert new entry

@@ -19,7 +19,7 @@
         ?>
     
         <!-- Page Content Holder -->
-        <div id="content">
+        <div id="content-fixed">
     
             <?php
                 include('navbar.php');
@@ -37,7 +37,7 @@
         $(document).ready(function () {
 
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+                $('#sidebar-fixed').toggleClass('active');$('#content-fixed').toggleClass('active');
             });
 
         });

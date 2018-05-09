@@ -107,5 +107,5 @@
     ');
 ?>
 </div>
-<button for="pretest" type="submit" class="btn btn-primary btn-block">Selesai</button>
+<button for="pretest" type="submit" onClick="stopwatch.stop();" class="btn btn-primary btn-block">Selesai</button>
 </form>

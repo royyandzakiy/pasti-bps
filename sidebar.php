@@ -61,7 +61,7 @@
                 // test
                 $is_test = ($row[2] == '0103' || $row[2] == '0207' || $row[2] == '0306');
                 $is_start = ($row[2] == '0201' || $row[2] == '0301');
-                echo "start:" . $is_start;
+                // echo "start:" . $is_start;
                 if ($is_test) {
                     // check if ever watched materi before
                     $query_riwayat = "SELECT * FROM riwayattopik WHERE id_siswa = ".$_SESSION['nip']." AND id_topik = ".($row[2]-1);

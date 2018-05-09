@@ -46,5 +46,5 @@
     $_SESSION['konsep_aktif'] = $konsep_terakhir;
     $_SESSION['topik_aktif'] = $topik_terakhir;
 
-    header('location:pretest.php');
+    header('location:pra_pretest.php');
 ?>

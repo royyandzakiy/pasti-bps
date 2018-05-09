@@ -4,7 +4,7 @@
 
     if (session_status() != PHP_SESSION_NONE) {
         if ($_SESSION['logged_in']) {
-            header('location:index.php');
+            header('location:pra_pretest.php');
         } else {
             session_destroy();
         }

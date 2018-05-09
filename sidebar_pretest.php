@@ -82,7 +82,7 @@
     stop() {
         this.running = false;
         let times = this.times;
-        alert(times);
+        // alert(times);
     }
     
     step(timestamp) {

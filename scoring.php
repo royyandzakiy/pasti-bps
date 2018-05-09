@@ -124,6 +124,8 @@
     }
     $query = "UPDATE users SET level_kemampuan = $level_pengetahuan WHERE nip = $id_siswa";
     $result = $con->query($query);
+
+    $_SESSION['level_pengetahuan'] = $level_pengetahuan;
     
     // DB: KONSEP TES
         // CHECK IF DATA KONSEPTES EXISTS
@@ -191,7 +193,7 @@
     echo '$_id = ' . $_id . '<br/>';
     //---END_DEBUG
 
-    // header('location:hasil_tes.php?_id='.$_id);
+    header('location:hasil_tes.php?_id='.$_id);
 ?>
 
 <a href="hasil_tes.php?_id=<?= $_id ?>"><button class="btn">Next</button></a>

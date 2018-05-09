@@ -45,6 +45,7 @@
             ');
 
             while($row = $result->fetch(PDO::FETCH_NUM)) {
+                // KONSEP
                 if ($row[1] != $crnt_judul) 
                 {
                     $crnt_judul = $row[1];
@@ -56,9 +57,28 @@
                             <ul class="collapse list-unstyled" id="konsep-'.$row[0].'">'
                     );
                 }
-                echo (
-                    '<li id="topik-'.$row[2].'"><a href="'.($row[2] > $max_konseptopik ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.($row[2] > $max_konseptopik ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
-                );
+                // TOPIK
+                // test
+                $is_test = ($row[2] == '0103' || $row[2] == '0207' || $row[2] == '0306');
+                if ($is_test) {
+                    // check if ever watched materi before
+                    $query = "SELECT * FROM riwayattopik WHERE id_topik LIKE ".$row[2]-1;
+                    $result = $con->query($query);
+                    if ($row = $result->fetch(PDO::FETCH_NUM)) {
+                        echo (
+                            '<li id="topik-'.$row[2].'"><a href="change_page.php?goto='.$row[2].'" class="unlocked">'.$row[3].'</a></li>'
+                        );
+                    } else {
+                        echo (
+                            '<li id="topik-'.$row[2].'"><a href="#" class="locked">'.$row[3].'</a></li>'
+                        );
+                    }
+                } else {
+                // non-test
+                    echo (
+                        '<li id="topik-'.$row[2].'"><a href="'.($row[2] > $max_konseptopik ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.($row[2] > $max_konseptopik ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
+                    );
+                }
             }
 
             echo('</ul>
@@ -70,7 +90,7 @@
             <a href="#" class="download">Download materi</a>
         </li> -->
         <li>
-            <a href="hasil_belajar.php" class="download">Hasil belajar</a>
+            <a href="hasil_belajar.php?konsep_aktif=<?= $konsep_aktif ?>&topik_aktif=<?= $konsep_aktif ?>" class="download">Hasil belajar</a>
         </li>
     </ul>
 

@@ -47,7 +47,7 @@
 
             // echo('tes = ' . ((int) $row[5] <= (int) '01') ? 'true' : 'false');
 
-            header('location:index.php');
+            header('location:pra_pretest.php');
         } else {
             header('location:login.php?login_status=false');
         }

@@ -19,7 +19,7 @@ $result = $con->query($query);
 
 if ($row = $result->fetch(PDO::FETCH_NUM)) {
     // update riwayattopik
-    $query = "UPDATE riwayattopik SET jumlah_topik = jumlah_topik + 1";
+    $query = "UPDATE riwayattopik SET jumlah_topik = (jumlah_topik + 1) WHERE id_siswa = $id_siswa AND id_topik = " . (string) $konseptopik_aktif;
 } else {
     // insert new to riwayattopik
     $query = "INSERT INTO riwayattopik (id_siswa, id_topik, jumlah_topik) VALUES ($id_siswa, " . (string) $konseptopik_aktif . ", 1)";

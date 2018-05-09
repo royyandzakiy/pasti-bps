@@ -116,8 +116,7 @@
     format(times) {
         return `\
     ${pad0(times[0], 2)}:\
-    ${pad0(times[1], 2)}:\
-    ${pad0(Math.floor(times[2]), 2)}`;
+    ${pad0(times[1], 2)}`;
         }
     }
 

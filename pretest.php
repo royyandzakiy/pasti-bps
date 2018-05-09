@@ -23,6 +23,9 @@
     
             <?php
                 include('navbar.php');
+                ?>      
+            <h1>PRETEST </h1>
+            <?php
                 include('load_questions.php');
             ?>      
 

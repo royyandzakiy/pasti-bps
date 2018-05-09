@@ -42,7 +42,7 @@
         $row_konsep     = ($row[0] < 10 ? '0'.$row[0] : $row[0]);
         $id_topik       = ('0' . $row[1]);
         $id_test        = ($row[2] < 10 ? '0'.$row[2] : $row[2]);
-        $id_question    = ($row[3] < 10 ? '0'.$row[3] : $row[3]);
+        $id_question    = ('0'.$row[3]);
 
         //TOPIKTES: CHECK IF TOPIK NOT_EXIST
         if (array_key_exists($id_topik, $topiktes) === false) {
@@ -61,8 +61,8 @@
         // CHECK IF ANSWER CORRECT
         if ( ($test_type == 'pertayaantes' && $row_konsep == $konsep_aktif) || $test_type == 'pretest') {   
             echo $nomor . ". ";
-            echo $row[6] , " === " . $_POST['q-'.$id_test.$id_question] . "<br />";
-            $correct = $row[6] == $_POST['q-'.$id_test.$id_question] ? 1 : 0;
+            echo  "[ q-$id_test$id_question ] : " .$_POST['q-'.$id_test.$id_question] . " === " . $row[6] . "<br />";
+            $correct = $row[6] === $_POST['q-'.$id_test.$id_question] ? 1 : 0;
             array_push($rekap, $correct);
 
             //---DEBUG
@@ -110,6 +110,20 @@
                 $result = $con->query($query);
             }
         }
+    
+    // UPDATE LEVEL PENGETAHUAN
+
+    $level_pengetahuan = 0;
+    for ($i=1; $i<=3; $i++) {
+        $query = "SELECT id_siswa, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $i";
+        $result = $con->query($query);
+        if ($row = $result->fetch(PDO::FETCH_NUM)) {
+            // yes: PERNAH MELAKUKAN TES
+            $level_pengetahuan += ($row[1] / 100.0) * $row[5];
+        }
+    }
+    $query = "UPDATE users SET level_kemampuan = $level_pengetahuan WHERE nip = $id_siswa";
+    $result = $con->query($query);
     
     // DB: KONSEP TES
         // CHECK IF DATA KONSEPTES EXISTS
@@ -173,6 +187,7 @@
     echo "DURASI: " . $durasi . " menit<br />";
     echo "TP: " . $tingkat_penguasaan . "<br />";
     echo "TOTAL WAKTU: " . $interval_h, " hours, ", $interval_m, " minutes, ", $interval_s, " seconds<br/>"; // debug
+    echo "UPDATE LEVEL PENGETAHUAN: " . $level_pengetahuan . "<br/>";
     echo '$_id = ' . $_id . '<br/>';
     //---END_DEBUG
 

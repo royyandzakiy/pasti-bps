@@ -3,9 +3,9 @@
 
 <?php
     if ($test_type == 'pretest') {
-        echo '<form action="scoring.php" method="post" name="pertayaantes" id="pertayaantes">';
-    } else {
         echo '<form action="scoring_pretest.php" method="post" name="pertayaantes" id="pertayaantes">';
+    } else {
+        echo '<form action="scoring.php" method="post" name="pertayaantes" id="pertayaantes">';
     }
 ?>
 <div class="col-md-12">

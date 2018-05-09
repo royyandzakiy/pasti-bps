@@ -104,7 +104,7 @@
             <a href="#" class="download">Download materi</a>
         </li> -->
         <li>
-            <a href="hasil_belajar.php?konsep_aktif=<?= $konsep_aktif ?>&topik_aktif=<?= $konsep_aktif ?>" class="download">Hasil belajar</a>
+            <a href="#" class="download">Download</a>
         </li>
     </ul>
 

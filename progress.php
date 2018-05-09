@@ -89,7 +89,7 @@
                     text: ""
                 },
                 axisX: {
-                    title: "Konsep",
+                    title: "BAB",
                     minimum: 0,
                     maximum: 3,
                     interval: 1
@@ -115,7 +115,7 @@
                     text: ""
                 },
                 axisX: {
-                    title: "Konsep",
+                    title: "BAB",
                     minimum: 0,
                     maximum: 3,
                     interval: 1

@@ -22,7 +22,7 @@
         <div id="content-fixed">
     
             <?php
-                include('navbar.php');
+                // include('navbar.php');
                 ?>      
             <h1>PRETEST </h1>
             <?php

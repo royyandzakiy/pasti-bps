@@ -5,12 +5,18 @@
 
     $test_type = 'pretest';
     $_SESSION['test_type'] = $test_type;
+    $id_siswa = $_SESSION['nip'];
 
     // CHECK IF HAVE TESTED
-    $done_pretest;
-    if (false) {
+    $query = "SELECT * FROM hasilpretest WHERE id_siswa = $id_siswa";
+    $result = $con->query($query);
+    $row = $result->fetch(PDO::FETCH_NUM);
+    
+    $done_pretest = $row != NULL ? true : false;
+    
+    if ($done_pretest) {
         header('location:index.php');
-    }
+    } else {
 ?>
 
 <html !DOCTYPE>
@@ -25,7 +31,7 @@
         <div id="content-fixed">
     
             <h1>PRETEST </h1>
-            "Sebelum melakukan pembelajaran pada sistem PASTI, anda diwajibkan mengikuti pretest"
+            "Sebelum melakukan pembelajaran pada sistem PASTI, anda diwajibkan mengikuti pretest"<br />
             <a href="pretest.php"><button class="btn btn-large btn-success">MULAI PRETEST</button></a>
 
         </div>
@@ -45,3 +51,6 @@
     </body>
 
 </html>
+<?php
+    }
+?>

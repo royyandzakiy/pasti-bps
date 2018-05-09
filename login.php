@@ -86,6 +86,15 @@
                         <div class="panel-title">Login</div>
                     </div>     
 
+                    <?php
+                        if (isset($_GET['msg'])) {
+                            if ($_GET['msg'] == 'nip_used') {    
+                                // echo "NIP sudah digunakan, silahkan mendaftar dengan NIP lain";
+                            }
+                            unset($_GET['msg']);
+                        }
+                    ?>
+
                     <div style="padding-top:30px" class="panel-body" >
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>

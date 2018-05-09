@@ -60,11 +60,14 @@
                 // TOPIK
                 // test
                 $is_test = ($row[2] == '0103' || $row[2] == '0207' || $row[2] == '0306');
+                $is_start = ($row[2] == '0201' || $row[2] == '0301');
+                echo "start:" . $is_start;
                 if ($is_test) {
                     // check if ever watched materi before
-                    $query = "SELECT * FROM riwayattopik WHERE id_topik LIKE ".$row[2]-1;
-                    $result = $con->query($query);
-                    if ($row = $result->fetch(PDO::FETCH_NUM)) {
+                    $query_riwayat = "SELECT * FROM riwayattopik WHERE id_siswa = ".$_SESSION['nip']." AND id_topik = ".($row[2]-1);
+                    $result_riwayat = $con->query($query_riwayat);
+                    $row_riwayat = $result_riwayat->fetch(PDO::FETCH_NUM);
+                    if ($row_riwayat) {
                         echo (
                             '<li id="topik-'.$row[2].'"><a href="change_page.php?goto='.$row[2].'" class="unlocked">'.$row[3].'</a></li>'
                         );
@@ -73,8 +76,19 @@
                             '<li id="topik-'.$row[2].'"><a href="#" class="locked">'.$row[3].'</a></li>'
                         );
                     }
+                } else if ($is_start) {
+                // start
+                    $is_pass_level_pengetahuan = false;
+                    if ($row[2] == '0201' && $_SESSION['level_pengetahuan'] > 16) {
+                        $is_pass_level_pengetahuan = true;
+                    } else if ($row[2] == '0301' && $_SESSION['level_pengetahuan'] > 50) {
+                        $is_pass_level_pengetahuan = true;
+                    }
+                    echo (
+                        '<li id="topik-'.$row[2].'"><a href="'.(!$is_pass_level_pengetahuan ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.(!$is_pass_level_pengetahuan ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
+                    );
                 } else {
-                // non-test
+                    // non-test
                     echo (
                         '<li id="topik-'.$row[2].'"><a href="'.($row[2] > $max_konseptopik ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.($row[2] > $max_konseptopik ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
                     );

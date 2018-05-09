@@ -93,6 +93,11 @@ a:focus {
     background: #fff;
 }
 
+a.locked {
+    color: rgba(217,213,278,.7);
+    cursor: not-allowed;
+}
+
 #sidebar ul li a.locked:hover {
     color: #7386D5;
     background: rgba(255, 255, 255, .3);

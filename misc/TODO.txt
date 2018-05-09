@@ -1,4 +1,4 @@
 TODO:
-- hitung jumlah topik diambil dari playvideo
-- waktu countdown belum muncul
-- nomor urut ikut turun
+x hitung jumlah topik diambil dari playvideo
+x waktu countdown belum muncul
+x nomor urut ikut turun

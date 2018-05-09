@@ -94,7 +94,7 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit" maxlength="5" required/>                                        
+                                        <input id="login-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit" maxlength="5" minlength="5" required/>                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">

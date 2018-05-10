@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2018 at 09:03 PM
+-- Generation Time: May 10, 2018 at 09:54 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -131,7 +131,8 @@ INSERT INTO `hasiltest` (`id`, `id_siswa`, `durasi`, `q1`, `q2`, `q3`, `q4`, `q5
 (165, '12345', '00:00:09', 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (166, '12345', '00:01:33', 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1),
 (167, '12345', '00:01:49', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1),
-(168, '12345', '00:00:00', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0);
+(168, '12345', '00:00:00', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
+(169, '11111', '00:00:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ INSERT INTO `konseptes` (`id`, `ID_siswa`, `ID_tes`, `bobot_tes`, `durasi`, `jaw
 (16, '0', '1', 20, 0, 0, 0, 0, 24),
 (17, '17935', '1', 20, 14, 20, 100, 100, 1),
 (18, '13123', '1', 20, 5, 0, 0, 0, 11),
-(19, '11111', '1', 20, 2, 16, 80, 81, 18),
+(19, '11111', '1', 20, 0, 0, 0, 0, 19),
 (20, '99999', '1', 20, 1, 0, 0, 0, 1),
 (21, '11111', '2', 40, 2, 0, 0, 0, 7),
 (22, '12345', '1', 20, 2, 17, 84, 85, 2),
@@ -358,7 +359,7 @@ INSERT INTO `riwayatkonsep` (`id`, `ID_siswa`, `ID_konsep`, `tingkat_penguasaan`
 (4, '00000', '01', 0),
 (5, '17935', '01', 100),
 (6, '13123', '01', 0),
-(7, '11111', '01', 81),
+(7, '11111', '01', 0),
 (8, '99999', '01', 0),
 (9, '11111', '02', 0),
 (10, '12345', '01', 85),
@@ -382,9 +383,9 @@ CREATE TABLE `riwayattopik` (
 --
 
 INSERT INTO `riwayattopik` (`id`, `ID_siswa`, `ID_topik`, `jumlah_topik`) VALUES
-(46, '11111', '101', 1),
+(46, '11111', '101', 2),
 (47, '11111', '102', 1),
-(48, '11111', '103', 3),
+(48, '11111', '103', 4),
 (49, '11111', '201', 1),
 (50, '11111', '202', 1),
 (51, '11111', '203', 1),
@@ -593,7 +594,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nip`, `nama`, `password`, `tanggal_lahir`, `pendidikan`, `tahun_masuk`, `email`, `pengalaman_survei`, `pengalaman_SIBS`, `level_kemampuan`, `konsep_terakhir`, `topik_terakhir`, `jenis_kelamin`, `umur`, `masa_kerja`) VALUES
 (1, '13515', 'Royyan', 'admin', '1990-01-01', 'SD', 2011, 'pastibps@gmail.com', 'ya', 'ya', '0', '01', '02', '', 0, 0),
-(2, '11111', 'admin', 'admin', '1990-01-01', 'SMP', 2018, 'admin@admin.com', 'ya', 'ya', '16.2', '02', '06', 'l', 0, 0),
+(2, '11111', 'admin', 'admin', '1990-01-01', 'SMP', 2018, 'admin@admin.com', 'ya', 'ya', '0', '02', '05', 'l', 0, 0),
 (3, '00000', 'admin', 'admin', '1990-05-09', 'SD', 2018, 'admin@admin.com', 'Ya', 'Ya', '3.4', '01', '02', '', 0, 0),
 (4, '17935', 'aries', '12345', '1980-05-09', 'SMA', 2013, 'aries@gmail.com', 'Ya', 'Tidak', '0', '01', '01', '', 0, 0),
 (13, '13123', 'warjklr', 'jflwekj', '1991-06-19', 'Tidak Tamat SD', 2013, 'kalwje@tjwalr.com', 'Belum Pernah', 'Sudah Pernah', '0', '01', '01', 'l', 26, 5),
@@ -602,7 +603,9 @@ INSERT INTO `users` (`id`, `nip`, `nama`, `password`, `tanggal_lahir`, `pendidik
 (16, '00000', 'admin', 'admin', '2018-05-15', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '01', '02', 'l', 0, 0),
 (17, '00000', 'admin', 'admin', '2018-05-15', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '01', '02', 'l', 0, 0),
 (18, '22222', 'admin', 'admin', '2018-01-02', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '0', '', 'l', 0, 0),
-(19, '12345', 'admin', 'admin', '1991-06-13', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '20.6', '02', '07', 'l', 26, 0);
+(19, '12345', 'admin', 'admin', '1991-06-13', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '20.6', '02', '07', 'l', 26, 0),
+(20, '12376', 'admn', 'admin', '2000-12-03', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '01', '01', 'l', 17, 0),
+(21, '3213', 'admn', '2313', '2000-12-03', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '01', '01', 'l', 17, 0);
 
 -- --------------------------------------------------------
 
@@ -721,7 +724,7 @@ ALTER TABLE `hasilpretest`
 -- AUTO_INCREMENT for table `hasiltest`
 --
 ALTER TABLE `hasiltest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 --
 -- AUTO_INCREMENT for table `konseptes`
 --
@@ -756,7 +759,7 @@ ALTER TABLE `topiktes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users_materi`
 --

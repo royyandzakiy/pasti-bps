@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2018 at 06:51 AM
+-- Generation Time: May 10, 2018 at 09:03 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -54,7 +54,12 @@ CREATE TABLE `hasilpretest` (
 INSERT INTO `hasilpretest` (`id`, `id_siswa`, `durasi`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`) VALUES
 (22, '13123', '00:00:14', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (23, '13123', '00:00:53', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(24, '13123', '00:01:30', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(24, '13123', '00:01:30', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(25, '99999', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
+(26, '11111', '00:00:19', 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(27, '88888', '00:00:19', 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0),
+(28, '13515', '00:00:05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(29, '12345', '00:00:04', 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -93,133 +98,40 @@ CREATE TABLE `hasiltest` (
 --
 
 INSERT INTO `hasiltest` (`id`, `id_siswa`, `durasi`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`, `q16`, `q17`, `q18`, `q19`, `q20`) VALUES
-(1, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, '13515', '00:06:23', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, '13515', '00:00:19', 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0),
-(7, '13515', '00:00:03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(8, '13515', '00:01:12', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(9, '13515', '00:00:00', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(10, '13515', '00:00:00', 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(11, '13515', '00:00:08', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(12, '13515', '00:00:08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(13, '13515', '00:00:11', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(14, '13515', '00:47:04', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(15, '13515', '00:47:14', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(16, '13515', '00:47:27', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(17, '13515', '00:47:40', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(18, '13515', '00:47:51', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(19, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(20, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(21, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(22, '13515', '00:51:34', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(23, '13515', '00:52:46', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(24, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(25, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(26, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(27, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(28, '13515', '00:54:08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(29, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(30, '13515', '01:06:42', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(31, '13515', '01:12:29', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(32, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(33, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(34, '13515', '01:19:39', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(35, '13515', '01:19:46', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(36, '13515', '01:20:51', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(37, '13515', '01:21:35', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(38, '13515', '01:22:03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(39, '13515', '01:22:21', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(40, '13515', '01:24:59', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(41, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(42, '13515', '01:26:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(43, '13515', '01:31:27', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(44, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(45, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(46, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(47, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(48, '13515', '01:54:28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(49, '13515', '01:58:07', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(50, '13515', '01:58:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(51, '13515', '00:00:05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(52, '13515', '00:01:29', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(53, '13515', '00:01:51', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(54, '13515', '00:00:15', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(55, '13515', '00:00:05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(56, '13515', '00:01:22', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(57, '13515', '00:02:29', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(58, '13515', '00:03:45', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(59, '13515', '00:00:00', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(60, '13515', '00:04:27', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(61, '13515', '00:00:00', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(62, '13515', '00:05:32', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(63, '13515', '00:00:07', 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(64, '13515', '00:00:06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(65, '13515', '00:00:30', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(66, '13515', '00:00:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(67, '13515', '00:01:46', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(68, '13515', '00:00:13', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(69, '13515', '00:00:23', 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(70, '13515', '00:00:15', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(71, '13515', '00:00:11', 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(72, '13515', '00:01:29', 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(73, '13515', '00:00:00', 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(74, '13515', '00:00:00', 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(75, '13515', '00:00:09', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(76, '13515', '00:00:18', 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(77, '13515', '00:00:04', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(78, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(79, '13515', '00:00:19', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(80, '13515', '00:00:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(81, '13515', '00:00:10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(82, '13515', '00:00:07', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(83, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(84, '13515', '00:02:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(85, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(86, '13515', '00:03:10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(87, '13515', '00:03:36', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(88, '13515', '00:03:42', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(89, '13515', '00:03:58', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(90, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(91, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(92, '13515', '00:00:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(93, '13515', '00:00:01', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(94, '13515', '00:00:55', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(95, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(96, '13515', '00:01:08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(97, '13515', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(98, '13515', '00:00:23', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(99, '00000', '00:00:06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(100, '00000', '00:00:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(101, '00000', '00:00:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(102, '00000', '00:00:03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(103, '00000', '00:00:00', 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(104, '00000', '00:00:00', 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(105, '00000', '00:04:45', 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(106, '00000', '00:05:36', 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(107, '00000', '00:00:00', 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(108, '00000', '01:38:31', 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(109, '00000', '00:00:00', 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(110, '00000', '01:41:10', 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(111, '00000', '00:02:42', 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(112, '00000', '00:05:29', 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(113, '00000', '00:00:00', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(114, '00000', '00:00:00', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(115, '00000', '00:00:00', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(116, '00000', '00:08:52', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(117, '00000', '00:00:00', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(118, '00000', '00:00:00', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(119, '00000', '00:00:00', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(120, '00000', '00:11:18', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1),
-(121, '00000', '00:01:01', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0),
-(122, '00000', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0),
-(123, '00000', '00:00:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(124, '17935', '00:08:39', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(125, '11111', '00:00:09', 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-(126, '11111', '00:00:11', 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-(127, '11111', '00:01:14', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0);
+(135, '11111', '00:00:24', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(136, '11111', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(137, '11111', '00:01:09', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(138, '11111', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(139, '11111', '00:02:05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(140, '11111', '00:00:25', 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0),
+(141, '11111', '00:00:03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(142, '11111', '00:00:07', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(143, '11111', '00:02:58', 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(144, '11111', '00:00:14', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
+(145, '11111', '00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(146, '11111', '00:00:01', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(147, '11111', '00:00:13', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(148, '11111', '00:01:29', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(149, '11111', '00:01:32', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(150, '11111', '00:00:17', 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0),
+(151, '11111', '00:01:07', 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0),
+(152, '11111', '00:01:14', 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0),
+(153, '11111', '00:00:00', 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0),
+(154, '11111', '00:00:17', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0),
+(155, '11111', '00:00:23', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0),
+(156, '11111', '00:00:06', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(157, '11111', '00:00:36', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(158, '11111', '00:00:00', 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1),
+(159, '11111', '00:00:00', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(160, '11111', '00:01:41', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(161, '11111', '00:01:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(162, '11111', '00:00:10', 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
+(163, '11111', '00:00:16', 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
+(164, '11111', '00:01:49', 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1),
+(165, '12345', '00:00:09', 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(166, '12345', '00:01:33', 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1),
+(167, '12345', '00:01:49', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1),
+(168, '12345', '00:00:00', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -245,12 +157,16 @@ CREATE TABLE `konseptes` (
 
 INSERT INTO `konseptes` (`id`, `ID_siswa`, `ID_tes`, `bobot_tes`, `durasi`, `jawaban_benar`, `nilai`, `tingkat_penguasaan`, `jumlah_tes`) VALUES
 (12, '13515', '2', 40, 0, 0, 0, 0, 36),
-(13, '13515', '1', 20, 0, 0, 0, 0, 19),
+(13, '13515', '1', 20, 0, 0, 0, 0, 26),
 (14, '13515', '3', 40, 0, 0, 0, 0, 2),
 (16, '0', '1', 20, 0, 0, 0, 0, 24),
 (17, '17935', '1', 20, 14, 20, 100, 100, 1),
 (18, '13123', '1', 20, 5, 0, 0, 0, 11),
-(19, '11111', '1', 20, 2, 6, 28, 28, 3);
+(19, '11111', '1', 20, 2, 16, 80, 81, 18),
+(20, '99999', '1', 20, 1, 0, 0, 0, 1),
+(21, '11111', '2', 40, 2, 0, 0, 0, 7),
+(22, '12345', '1', 20, 2, 17, 84, 85, 2),
+(23, '12345', '2', 40, 1, 2, 10, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -335,7 +251,7 @@ INSERT INTO `pertayaantes` (`id`, `id_konsep`, `id_topik`, `id_test`, `id_questi
 (18, 1, 102, 1, 18, 6, 'Untuk melaporkan hasil matching perusahaan di direktori IBS dengan instansi lain menggunakan', 'Daftar I-SL', 'IB', 'Updating Perusahaan', 'IIA', 'Daftar I-SL'),
 (19, 1, 102, 1, 19, 6, 'Daftar I-SL (K) digunakan untuk', 'Penyalinan hasil matching perusahaan didalam IA dengan instansi lain pada tingkat kabupaten/kota', 'Penyalinan hasil matching perusahaan didalam IA dengan instansi lain pada tingkat nasional', 'Penyalinan hasil matching perusahaan didalam IA dengan instansi lain pada tingkat provinsi', 'Penyalinan hasil matching perusahaan didalam IA dengan instansi lain pada tingkat kabupaten/kota', 'Penyalinan hasil matching perusahaan didalam IA dengan instansi lain, pada tingkat kecamatan'),
 (20, 1, 102, 1, 20, 6, 'Untuk perusahaan yang aktif dan non-respon, di data dengan kuesioner....', 'IIB', 'IB', 'IIB', 'IIA', 'Daftar I-SL'),
-(21, 2, 201, 2, 1, 6, 'Kegiatan yang sangat penting dan utama di dalam Pemutakhiran Direktori untuk melengkapi cakupan Direktori BPS adalah:', 'Menjaring perusahaan baru', 'Melaporkan perusahaan yang pindah kategori menjadi bukan kategori industri manufaktur', 'Melaporkan perusahaan yang berubah skala menjadi kelompok industri mikro atau kecil', 'Melaporkan perusahaan yang pindah, tutup dan non respon', 'Menjaring perusahaan baru'),
+(21, 2, 201, 2, 1, 6, 'Kegiatan yang sangat penting dan utama di dalam Pemutakhiran Direktori untuk melengkapi cakupan Direktori IBS adalah:', 'Menjaring perusahaan baru', 'Melaporkan perusahaan yang pindah kategori menjadi bukan kategori industri manufaktur', 'Melaporkan perusahaan yang berubah skala menjadi kelompok industri mikro atau kecil', 'Melaporkan perusahaan yang pindah, tutup dan non respon', 'Menjaring perusahaan baru'),
 (22, 2, 201, 2, 2, 6, 'Beberapa tujuan dilakukannya kegiatan Updating Direktori dalam pelaksanaan kegiatan Survei Tahunan Industri Manufaktur adalah seperti berikut, kecuali:', 'Meningkatkan response rate', 'Menjaring Perusahaan Baru', 'Meningkatkan response rate', 'Melaporkan Perusahaan yang respon, tutup, berubah skala, berubah sub sektor', 'Salah satu manajemen survei'),
 (23, 2, 201, 2, 3, 6, 'Berikut adalah kegiatan di dalam Updating Direktori Survei Tahunan Industri Manufaktur di dalam tahun survei, kecuali:', 'Melaporkan perusahaan lewat cacah', 'Melaporkan perusahaan tutup, pindah, dobel, bukan industri dan berubah skala dengan daftar II-B', 'Cek lapangan perusahaan aktif', 'Melaporkan perusahaan lewat cacah', 'Melaporkan perusahaan yang non respon'),
 (24, 2, 201, 2, 4, 4, 'Pengecekan hasil updating dan Aproval I-B dan II-B oleh provinsi dilaksanakan pada periode', 'Maret - Juni', 'Januari - Juni', 'Februari - April', 'Maret - Juni', 'November'),
@@ -351,7 +267,7 @@ INSERT INTO `pertayaantes` (`id`, `id_konsep`, `id_topik`, `id_test`, `id_questi
 (34, 2, 205, 2, 14, 6, 'Kelompok perusahaan yang paling tepat dilaporkan dengan daftar isian II-B adalah:', 'Perusahaan pindah Kabupaten/Kota', 'Perusahaan yang lewat cacah', 'Kegiatan produksi masih percobaan', 'Perusahaan pindah Kabupaten/Kota', 'Perusahaan tenaga kerja diatas 20 orang keatas.'),
 (35, 2, 205, 2, 15, 4, 'Jadwal melaporkan perusahaan tutup, pindah, dobel, bukan industri manufaktur, dan berubah skala adalah di bulan', 'Januari - April', 'Januari - April', 'Februari - April', 'Maret - Juni', 'November'),
 (36, 2, 205, 2, 16, 4, 'Sering kali ketika mendata suatu perusahaan khususnya perusahaan besar, tidak bersedia memberikan data, kemudian dikunjungi kembali tetapi tetap tidak memberikan data dan hal ini menyebabkan non respon, saat yang tepat melaporkan non respon adalah di bulan:', 'November', 'Januari - April', 'Februari - April', 'Maret - Juni', 'November'),
-(37, 2, 205, 2, 17, 6, 'Di dalam Pemutakhiran Direktori, apabila ada perusahaan yang pindah ke luar Provinsi, maka di dalam isian kuesioner II-B perusahaan yang pindah tersebut akan dinyakatan sebagai:', 'Tutup permanen', 'Pindah', 'Tutup', 'Tutup sementara', 'Tutup permanen'),
+(37, 2, 205, 2, 17, 6, 'Di dalam Pemutakhiran Direktori, apabila ada perusahaan yang pindah ke luar Provinsi, maka di dalam isian kuesioner IIB perusahaan yang pindah tersebut akan dinyatakan sebagai:', 'Tutup permanen', 'Pindah', 'Tutup', 'Tutup sementara', 'Tutup permanen'),
 (38, 2, 206, 2, 18, 4, 'Istilah untuk perusahaan yang baru ditemukan (biasanya dengan daftar I-B)', 'AB', 'AL', 'AB', 'AC', 'AK'),
 (39, 2, 206, 2, 19, 6, 'Istilah TL digunakan untuk menggambarkan perusahaan yang...', 'Perusahaan yang tutup permanen tahun lalu', 'Perusahaan yang tutup permanen tahun lalu', 'Perusahaan yang sebelumnya aktif tetapi sekarang tutup permanen', 'Perusahaan yang sebelumnya aktif tetapi sekarang tutup', 'Perusahaan yang jenis kegiatan usahanya pada tahun survei tidak termasuk dalam kelompok Industri Manufaktur sesuai KBLI 2009'),
 (40, 2, 206, 2, 20, 4, 'Istilah untuk perusahaan yang jenis kegiatan usahanya pada tahun survei tidak termasuk dalam kelompok Industri Manufaktur sesuai KBLI 2009', 'BI', 'UL', 'UB', 'KL', 'BI'),
@@ -370,7 +286,7 @@ INSERT INTO `pertayaantes` (`id`, `id_konsep`, `id_topik`, `id_test`, `id_questi
 (53, 3, 304, 3, 13, 4, 'Jika di R19 Kuesioner IIA, volume bahan bakar seluruhnya lebih kecil daripada volume bahan bakar untuk pembangkit tenaga listrik. Apa langkah pertama yang harus dilakukan?', 'Konfirmasi ke responden (perusahaan). Kemungkinan isian terbalik', 'Mengganti isian jawaban dengan pendekatan harga setempat', 'Nilai keduanya dibuat sama', 'Konfirmasi ke responden (perusahaan). Kemungkinan isian terbalik', 'Mengganti isian jawaban dengan pendekatan antara bahan bakar dan tenaga listrik yang dibangkitkan'),
 (54, 3, 304, 3, 14, 6, 'Apabila isian rincian tenaga listik yang dibangkitkan (R22, Kuesioner IIA) terisi dan isian bahan bakar untuk pembangkit (R19, Kuesioner IIA) tidak terisi, apa langkah pertama yang harus dilakukan?', 'Konfirmasi ke responden (perusahaan). Bila responden tidak dapat menjawab, isikan jawaban dengan pendekatan konversi listrik dan bahan bakar', 'Isikan nilai bahan bakar untuk pembangkit (R19, Kuesioner IIA) dengan pendekatan harga setempat lalu lihat kewajarannya', 'Mengganti isian tenaga listik yang dibangkitkan (R22, Kuesioner IIA) lalu lihat kewajarannya', 'Konfirmasi ke responden (perusahaan). Bila responden tidak dapat menjawab, isikan jawaban dengan pendekatan konversi listrik dan bahan bakar', 'Mengosongkan isian tenaga listik yang dibangkitkan (R22, Kuesioner IIA)'),
 (55, 3, 304, 3, 15, 6, 'Apabila perusahaan tidak dapat mengisi rincian tenaga listik yang dibangkitkan (R22, Kuesioner IIA) dan diketahui bahwa perusahaan tersebut menggunakan 1 genset yang berkapasitas listrik rata-rata 10,5kva/380v  (R21, Kuesioner IIA). Genset itu bekerja selama 20 hari/bulan, 8jam/hari. Hitung perkiraan banyaknya tenaga listrik yang dibangkitkan sendiri oleh perusahaan (R22, Kuesioer IIA)', '16128 Kwh', '1344 Kwh', '1680 Kwh', '16128 Kwh', '60800 Kwh'),
-(56, 3, 304, 3, 16, 6, 'Manakah pernyataan yang benar terkait kuesioner IIA, kecuali', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Rasio nilai tambah berada di antara 0,25-4 terhadap tahun sebelumnya', 'Rincian 19 kolom 4 ? Rincian 19 kolom 5', 'KBLI sesuai dengan produk utama'),
+(56, 3, 304, 3, 16, 6, 'Manakah pernyataan yang benar terkait kuesioner IIA, kecuali', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Rasio nilai tambah berada di antara 0,25-4 terhadap tahun sebelumnya', 'Rincian 19 kolom 4 	&#8805; Rincian 19 kolom 5', 'KBLI sesuai dengan produk utama'),
 (57, 3, 304, 3, 17, 6, '25 pail cat =...kg', '625 kg', '1000 kg', '750 kg', '625 kg', '500 kg'),
 (58, 3, 305, 3, 18, 4, 'Rasio nilai input antar tahun adalah', '4 - 0,25', '0,5 - 5', '4 - 0,25', '7 - 0,25', '0,5 - 2'),
 (59, 3, 305, 3, 19, 6, 'Manakah yang termasuk komponen Nilai Tambah, kecuali', 'Nilai stok pada awal dan akhir tahun', 'Pengeluaran untuk pekerja', 'Pendapatan dari jasa industri (makloon)', 'Nilai tenaga listrik yang dibeli', 'Nilai stok pada awal dan akhir tahun'),
@@ -403,17 +319,17 @@ CREATE TABLE `pretest` (
 
 INSERT INTO `pretest` (`id`, `id_konsep`, `id_topik`, `id_test`, `id_question`, `weight`, `question`, `correct`, `A`, `B`, `C`, `D`) VALUES
 (1, 1, 101, 1, 4, '1', 'Tujuan dan Manfaat dari Survei Industri Besar dan Sedang (IBS) adalah', 'Menyediakan data dan informasi statistik industri besar dan sedang yang lengkap, akurat, relevan dan tepat waktu untuk bahan evaluasi dan perencanaan pembangunan', 'Memberikan pemahaman dan diagnostik awal atas kondisi aspek organisasi yang dapat mempengaruhi kinerja organisasi jangka panjang seluruh pegawai pada setiap level', 'Untuk mengetahui kepuasan para pelanggan dengan pelayanan jasa dan produk yang diberikan', 'Menyelenggarakan pelayanan dibidang perencanaan, ketatausahaan, kepegawaian, keuangan, kearsipan, kehumasan, hukum, perlengkapan dan rumah tangga', 'Menyediakan data dan informasi statistik industri besar dan sedang yang lengkap, akurat, relevan dan tepat waktu untuk bahan evaluasi dan perencanaan pembangunan'),
-(2, 2, 201, 2, 1, '1', 'Kegiatan yang sangat penting dan utama di dalam Pemutakhiran Direktori untuk melengkapi cakupan Direktori BPS adalah:', 'Menjaring perusahaan baru', 'Melaporkan perusahaan yang pindah kategori menjadi bukan kategori industri manufaktur', 'Melaporkan perusahaan yang berubah skala menjadi kelompok industri mikro atau kecil', 'Melaporkan perusahaan yang pindah, tutup dan non respon', 'Menjaring perusahaan baru'),
+(2, 2, 201, 2, 1, '1', 'Kegiatan yang sangat penting dan utama di dalam Pemutakhiran Direktori untuk melengkapi cakupan Direktori IBS adalah:', 'Menjaring perusahaan baru', 'Melaporkan perusahaan yang pindah kategori menjadi bukan kategori industri manufaktur', 'Melaporkan perusahaan yang berubah skala menjadi kelompok industri mikro atau kecil', 'Melaporkan perusahaan yang pindah, tutup dan non respon', 'Menjaring perusahaan baru'),
 (3, 2, 201, 2, 2, '1', 'Beberapa tujuan dilakukannya kegiatan Updating Direktori dalam pelaksanaan kegiatan Survei Tahunan Industri Manufaktur adalah seperti berikut, kecuali:', 'Meningkatkan response rate', 'Menjaring Perusahaan Baru', 'Meningkatkan response rate', 'Melaporkan Perusahaan yang respon, tutup, berubah skala, berubah sub sektor', 'Salah satu manajemen survei'),
 (4, 2, 201, 2, 3, '1', 'Berikut adalah kegiatan di dalam Updating Direktori Survei Tahunan Industri Manufaktur di dalam tahun survei, kecuali:', 'Melaporkan perusahaan lewat cacah', 'Melaporkan perusahaan tutup, pindah, dobel, bukan industri dan berubah skala dengan daftar II-B', 'Cek lapangan perusahaan aktif', 'Melaporkan perusahaan lewat cacah', 'Melaporkan perusahaan yang non respon'),
 (5, 2, 203, 2, 9, '1', 'Manakah pernyataan yang paling benar', 'Perusahaan yang dilaporkan dengan I-B dan telah di approve Provinsi akan dicacah menggunakan Kuesioner Updating Perusahaan dan II-A', 'Perusahaan yang dilaporkan dengan I-B dan telah di approve Provinsi akan dicacah menggunakan Kuesioner Updating Perusahaan dan II-A', 'Perusahaan yang dilaporkan dengan Kuesioner Updating Perusahaan dan ternyata tutup, di lanjutkan dengan Kusesioner IIA', 'Jumlah Kuesioner Updating Perusahaan harus sama dengan jumlah Kuesioner IIA', 'Jumlah Kuesioner Updating Perusahaan harus sama dengan jumlah Kuesioner IB +  jumlah Kuesioner IIA'),
 (6, 2, 204, 2, 11, '1', 'Kelompok perusahaan yang di laporkan dengan Kuesioner I-B adalah, kecuali :', 'Perusahaan Industri Besar dan Sedang yang pindah ke provinsi lain', 'Perusahaan Industri Besar dan Sedang yang baru berdiri', 'Perusahaan Industri Besar dan Sedang yang baru pindah dari provinsi lain', 'Perusahaan Industri Besar dan Sedang yang pindah ke provinsi lain', 'Perusahaan yang baru berubah tenaga kerjanya menjadi 20 orang atau lebih'),
-(7, 2, 205, 2, 17, '1', 'Di dalam Pemutakhiran Direktori, apabila ada perusahaan yang pindah ke luar Provinsi, maka di dalam isian kuesioner II-B perusahaan yang pindah tersebut akan dinyakatan sebagai:', 'Tutup permanen', 'Pindah', 'Tutup', 'Tutup sementara', 'Tutup permanen'),
+(7, 2, 205, 2, 17, '1', 'Di dalam Pemutakhiran Direktori, apabila ada perusahaan yang pindah ke luar Provinsi, maka di dalam isian kuesioner IIB perusahaan yang pindah tersebut akan dinyatakan ', 'Tutup permanen', 'Pindah', 'Tutup', 'Tutup sementara', 'Tutup permanen'),
 (8, 3, 302, 3, 7, '1', 'Usaha Pakaian "Anjung" mempunyai tenaga kerja sebanyak 25 orang. Produk utamanya adalah kaos oblong. Untuk proses penyablonan pada kaos, Usaha Pakaian "Anjung" bekerjasama dengan Usaha Sablon "Aries". Usaha Sablon "Aries" mempekerjakan pegawai sebanyak 30 orang. Tahun 2017, Usaha Pakaian "Anjung" membayar 50 juta untuk proses penyablonan kaos kepada Usaha Sablon "Aries". Pada Kuesioner II-A untuk Usaha Pakaian "Anjung", nilai 50 juta itu akan masuk ke rincian berapa?', 'Rincian 19c. Jasa Industri yang dibayarkan', 'Rincian 18a. Upah/Gaji', 'Rincian 19c. Jasa Industri yang dibayarkan', 'Rincian 19k. Pengeluaran Lainnya', 'Rincian 28. Pendapatan dari jasa industri (Makloon)'),
 (9, 3, 303, 3, 10, '1', 'Kapasitas Terpasang adalah', 'Target produksi perusahaan', 'Output produksi terhadap target awal perusahaan', 'Rencana produksi tambahan perusahaan', 'Target produksi perusahaan', 'Realisasi produksi pada perusahaan'),
 (10, 3, 304, 3, 12, '1', 'Berikut alat atau cara pengecekan di dalam kewajaran isian pengeluaran tenaga kerja di dalam isian kuesioner II-A, kecuali', 'Melihat upah perusahaan per tenaga kerja per bulan dengan status permodalan perusahaan.', 'menggunakan alat control dengan upah minimum regional', 'membagi pengeluaran upah dalam satu tahun dibagi dengan jumlah tenaga kerja, kemudian dibagi lagi dengan bulan kegiatan upah, lalu dilihat menghasilkan upah yang wajar atau tidak', 'Melihat kewajaran upah per tenaga kerja per bulan dengan jenis pekerjaan (produksi atau non produksi)', 'Melihat upah perusahaan per tenaga kerja per bulan dengan status permodalan perusahaan.'),
 (11, 3, 304, 3, 15, '1', 'Apabila perusahaan tidak dapat mengisi rincian tenaga listik yang dibangkitkan (R22, Kuesioner IIA) dan diketahui bahwa perusahaan tersebut menggunakan 1 genset yang berkapasitas listrik rata-rata 10,5kva/380v  (R21, Kuesioner IIA). Genset itu bekerja selama 20 hari/bulan, 8jam/hari. Hitung perkiraan banyaknya tenaga listrik yang dibangkitkan sendiri oleh perusahaan (R22, Kuesioer IIA)', '16128 Kwh', '1344 Kwh', '1680 Kwh', '16128 Kwh', '60800 Kwh'),
-(12, 3, 304, 3, 16, '1', 'Manakah pernyataan yang benar terkait kuesioner IIA, kecuali', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Rasio nilai tambah berada di antara 0,25-4 terhadap tahun sebelumnya', 'Rincian 19 kolom 4 ? Rincian 19 kolom 5', 'KBLI sesuai dengan produk utama'),
+(12, 3, 304, 3, 16, '1', 'Manakah pernyataan yang benar terkait kuesioner IIA, kecuali', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Nilai bahan baku sewajarnya melebihi nilai produksinya', 'Rasio nilai tambah berada di antara 0,25-4 terhadap tahun sebelumnya', 'Rincian 19 kolom 4 	&#8805; Rincian 19 kolom 5', 'KBLI sesuai dengan produk utama'),
 (13, 3, 304, 3, 17, '1', '25 pail cat =...kg', '625 kg', '1000 kg', '750 kg', '625 kg', '500 kg'),
 (14, 3, 305, 3, 18, '1', 'Rasio nilai input antar tahun adalah', '4 - 0,25', '0,5 - 5', '4 - 0,25', '7 - 0,25', '0,5 - 2'),
 (15, 3, 305, 3, 19, '1', 'Manakah yang termasuk komponen Nilai Tambah, kecuali', 'Nilai stok pada awal dan akhir tahun', 'Pengeluaran untuk pekerja', 'Pendapatan dari jasa industri (makloon)', 'Nilai tenaga listrik yang dibeli', 'Nilai stok pada awal dan akhir tahun');
@@ -442,7 +358,11 @@ INSERT INTO `riwayatkonsep` (`id`, `ID_siswa`, `ID_konsep`, `tingkat_penguasaan`
 (4, '00000', '01', 0),
 (5, '17935', '01', 100),
 (6, '13123', '01', 0),
-(7, '11111', '01', 28);
+(7, '11111', '01', 81),
+(8, '99999', '01', 0),
+(9, '11111', '02', 0),
+(10, '12345', '01', 85),
+(11, '12345', '02', 9);
 
 -- --------------------------------------------------------
 
@@ -462,25 +382,24 @@ CREATE TABLE `riwayattopik` (
 --
 
 INSERT INTO `riwayattopik` (`id`, `ID_siswa`, `ID_topik`, `jumlah_topik`) VALUES
-(12, '13515', '202', 172),
-(13, '13515', '203', 172),
-(14, '13515', '204', 172),
-(15, '13515', '205', 172),
-(16, '13515', '206', 172),
-(21, '13515', '101', 144),
-(23, '13515', '303', 143),
-(24, '13515', '102', 131),
-(26, '0', '101', 115),
-(27, '0', '102', 105),
-(28, '17935', '101', 79),
-(29, '17935', '102', 74),
-(30, '17935', '0', 72),
-(31, '12345', '101', 68),
-(32, '11111', '101', 68),
-(33, '12312', '101', 68),
-(34, '21312', '101', 68),
-(35, '13123', '101', 64),
-(36, '11111', '102', 48);
+(46, '11111', '101', 1),
+(47, '11111', '102', 1),
+(48, '11111', '103', 3),
+(49, '11111', '201', 1),
+(50, '11111', '202', 1),
+(51, '11111', '203', 1),
+(52, '11111', '204', 1),
+(53, '11111', '205', 1),
+(63, '12345', '101', 2),
+(64, '12345', '102', 1),
+(65, '12345', '103', 2),
+(66, '12345', '201', 1),
+(67, '12345', '202', 1),
+(68, '12345', '203', 1),
+(69, '12345', '204', 1),
+(70, '12345', '205', 1),
+(71, '12345', '206', 1),
+(72, '12345', '207', 2);
 
 -- --------------------------------------------------------
 
@@ -589,7 +508,59 @@ INSERT INTO `topiktes` (`id`, `ID_siswa`, `ID_tes`, `ID_topik`, `jumlah_pertanya
 (150, '11111', '1', 302, 2, 0, 0),
 (151, '11111', '1', 303, 3, 0, 0),
 (152, '11111', '1', 304, 6, 0, 0),
-(153, '11111', '1', 305, 3, 0, 0);
+(153, '11111', '1', 305, 3, 0, 0),
+(154, '99999', '1', 101, 10, 0, 10),
+(155, '99999', '1', 102, 10, 0, 10),
+(156, '99999', '1', 201, 4, 0, 0),
+(157, '99999', '1', 202, 3, 0, 0),
+(158, '99999', '1', 203, 3, 0, 0),
+(159, '99999', '1', 204, 3, 0, 0),
+(160, '99999', '1', 205, 4, 0, 0),
+(161, '99999', '1', 206, 3, 0, 0),
+(162, '99999', '1', 301, 6, 0, 0),
+(163, '99999', '1', 302, 2, 0, 0),
+(164, '99999', '1', 303, 3, 0, 0),
+(165, '99999', '1', 304, 6, 0, 0),
+(166, '99999', '1', 305, 3, 0, 0),
+(167, '11111', '2', 101, 10, 0, 0),
+(168, '11111', '2', 102, 10, 0, 0),
+(169, '11111', '2', 201, 4, 0, 4),
+(170, '11111', '2', 202, 3, 0, 3),
+(171, '11111', '2', 203, 3, 0, 3),
+(172, '11111', '2', 204, 3, 0, 3),
+(173, '11111', '2', 205, 4, 0, 4),
+(174, '11111', '2', 206, 3, 0, 3),
+(175, '11111', '2', 301, 6, 0, 0),
+(176, '11111', '2', 302, 2, 0, 0),
+(177, '11111', '2', 303, 3, 0, 0),
+(178, '11111', '2', 304, 6, 0, 0),
+(179, '11111', '2', 305, 3, 0, 0),
+(180, '12345', '1', 101, 10, 1, 9),
+(181, '12345', '1', 102, 10, 0, 10),
+(182, '12345', '1', 201, 4, 0, 0),
+(183, '12345', '1', 202, 3, 0, 0),
+(184, '12345', '1', 203, 3, 0, 0),
+(185, '12345', '1', 204, 3, 0, 0),
+(186, '12345', '1', 205, 4, 0, 0),
+(187, '12345', '1', 206, 3, 0, 0),
+(188, '12345', '1', 301, 6, 0, 0),
+(189, '12345', '1', 302, 2, 0, 0),
+(190, '12345', '1', 303, 3, 0, 0),
+(191, '12345', '1', 304, 6, 0, 0),
+(192, '12345', '1', 305, 3, 0, 0),
+(193, '12345', '2', 101, 10, 0, 0),
+(194, '12345', '2', 102, 10, 0, 0),
+(195, '12345', '2', 201, 4, 0, 4),
+(196, '12345', '2', 202, 3, 0, 3),
+(197, '12345', '2', 203, 3, 1, 2),
+(198, '12345', '2', 204, 3, 1, 2),
+(199, '12345', '2', 205, 4, 1, 3),
+(200, '12345', '2', 206, 3, 2, 1),
+(201, '12345', '2', 301, 6, 0, 0),
+(202, '12345', '2', 302, 2, 0, 0),
+(203, '12345', '2', 303, 3, 0, 0),
+(204, '12345', '2', 304, 6, 0, 0),
+(205, '12345', '2', 305, 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -621,11 +592,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nip`, `nama`, `password`, `tanggal_lahir`, `pendidikan`, `tahun_masuk`, `email`, `pengalaman_survei`, `pengalaman_SIBS`, `level_kemampuan`, `konsep_terakhir`, `topik_terakhir`, `jenis_kelamin`, `umur`, `masa_kerja`) VALUES
-(1, '13515', 'Royyan', 'admin', '1990-01-01', 'SD', 2011, 'pastibps@gmail.com', 'ya', 'ya', '0', '02', '03', '', 0, 0),
-(2, '11111', 'admin', 'admin', '1990-01-01', 'SMP', 2018, 'admin@admin.com', 'ya', 'ya', '2.8', '01', '02', '', 0, 0),
-(3, '00000', 'admin', 'admin', '1990-05-09', 'SD', 2018, 'admin@admin.com', 'Ya', 'Ya', '3.4', '01', '01', '', 0, 0),
+(1, '13515', 'Royyan', 'admin', '1990-01-01', 'SD', 2011, 'pastibps@gmail.com', 'ya', 'ya', '0', '01', '02', '', 0, 0),
+(2, '11111', 'admin', 'admin', '1990-01-01', 'SMP', 2018, 'admin@admin.com', 'ya', 'ya', '16.2', '02', '06', 'l', 0, 0),
+(3, '00000', 'admin', 'admin', '1990-05-09', 'SD', 2018, 'admin@admin.com', 'Ya', 'Ya', '3.4', '01', '02', '', 0, 0),
 (4, '17935', 'aries', '12345', '1980-05-09', 'SMA', 2013, 'aries@gmail.com', 'Ya', 'Tidak', '0', '01', '01', '', 0, 0),
-(13, '13123', 'warjklr', 'jflwekj', '1991-06-19', 'Tidak Tamat SD', 2013, 'kalwje@tjwalr.com', 'Belum Pernah', 'Sudah Pernah', '0', '01', '01', 'l', 26, 5);
+(13, '13123', 'warjklr', 'jflwekj', '1991-06-19', 'Tidak Tamat SD', 2013, 'kalwje@tjwalr.com', 'Belum Pernah', 'Sudah Pernah', '0', '01', '01', 'l', 26, 5),
+(14, '99999', 'Royyan', 'admin', '1996-01-01', 'S3', 2015, 'gmail@royyan.com', 'Belum Pernah', 'Belum Pernah', '0', '01', '02', 'l', 22, 3),
+(15, '88888', 'tes semua bab', 'admin', '2018-05-13', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '0', '', 'l', 0, 0),
+(16, '00000', 'admin', 'admin', '2018-05-15', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '01', '02', 'l', 0, 0),
+(17, '00000', 'admin', 'admin', '2018-05-15', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '01', '02', 'l', 0, 0),
+(18, '22222', 'admin', 'admin', '2018-01-02', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '0', '0', '', 'l', 0, 0),
+(19, '12345', 'admin', 'admin', '1991-06-13', 'Tidak Tamat SD', 2018, 'admin@admin.com', 'Belum Pernah', 'Belum Pernah', '20.6', '02', '07', 'l', 26, 0);
 
 -- --------------------------------------------------------
 
@@ -739,17 +716,17 @@ ALTER TABLE `users_materi`
 -- AUTO_INCREMENT for table `hasilpretest`
 --
 ALTER TABLE `hasilpretest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `hasiltest`
 --
 ALTER TABLE `hasiltest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 --
 -- AUTO_INCREMENT for table `konseptes`
 --
 ALTER TABLE `konseptes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `materi`
 --
@@ -764,22 +741,22 @@ ALTER TABLE `pertayaantes`
 -- AUTO_INCREMENT for table `riwayatkonsep`
 --
 ALTER TABLE `riwayatkonsep`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `riwayattopik`
 --
 ALTER TABLE `riwayattopik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `topiktes`
 --
 ALTER TABLE `topiktes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `users_materi`
 --

@@ -7,13 +7,13 @@
 
     sql_connect('pasti_db');
 
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi";
+    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, video_url FROM materi";
     $result = $con->query($query);
     $row = $result->fetch(PDO::FETCH_NUM);
 
     $id_siswa = $_SESSION['nip'];
 
-    $tingkat_penguasaan_array = [80,50,0];
+    $tingkat_penguasaan_array = [0,0,0];
     $query = "SELECT id_tes, tingkat_penguasaan FROM konseptes WHERE id_siswa = $id_siswa";
     $result = $con->query($query);
     while ($row = $result->fetch(PDO::FETCH_NUM)) {
@@ -23,17 +23,17 @@
     // ambil data Tingkat Penguasaan
     $dataPointsTP = array(
         array("x" => 0 , "y" => 0),
-        array("x" => 1 , "y" => 80),
-        array("x" => 2 , "y" => 50),
+        array("x" => 1 , "y" => (int) $tingkat_penguasaan_array[0]),
+        array("x" => 2 , "y" => (int) $tingkat_penguasaan_array[1]),
         array("x" => 3 , "y" => (int) $tingkat_penguasaan_array[2])
     );
 
     // ambil data Level Pengetahuan
     $dataPointsLP = array(
         array("x" => 0 , "y" => 0),
-        array("x" => 1 , "y" => 80 * .20),
-        array("x" => 2 , "y" => 80 * .20 + 50 * .40),
-        array("x" => 3 , "y" => (int) $tingkat_penguasaan_array[0] * .20 + (int) $tingkat_penguasaan_array[1] * .40 + (int) $tingkat_penguasaan_array[2] * .40),
+        array("x" => 1 , "y" => (int) $tingkat_penguasaan_array[0] * .20),
+        array("x" => 2 , "y" => (int) $tingkat_penguasaan_array[0] * .20 + (int) $tingkat_penguasaan_array[1] * .40),
+        array("x" => 3 , "y" => (int) $tingkat_penguasaan_array[0] * .20 + (int) $tingkat_penguasaan_array[1] * .40 + (int) $tingkat_penguasaan_array[2] * .40)
     );
 ?>
 
@@ -55,10 +55,24 @@
                 include('navbar.php');
             ?>  
 
-            Tingkat Penguasaan
+            <a href="profile.php">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
+                <i class="glyphicon glyphicon-user"></i>
+                <span>Profil</span>
+            </button>
+            </a>
+            <a href="petunjuk.php">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
+                <i class="glyphicon glyphicon-question-sign"></i>
+                <span>Petunjuk Penggunaan</span>
+            </button>
+            </a>
+            <br />
+
+            <h3><i class="glyphicon glyphicon-chevron-right"></i> Tingkat Penguasaan</h3>
             <div id="chartContainerTP" style="height: 370px; width: 100%;"></div>
             <br />
-            Level Pengetahuan
+            <h3><i class="glyphicon glyphicon-chevron-right"></i> Level Pengetahuan</h3>
             <div id="chartContainerLP" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         </div>

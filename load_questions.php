@@ -1,7 +1,13 @@
 <!------ Include the above in your HEAD tag ---------->
 <link href="css/radio_button_questions.css" rel="stylesheet" >
 
-<form action="scoring.php" method="post" name="pertayaantes" id="pertayaantes">
+<?php
+    if ($test_type == 'pretest') {
+        echo '<form action="scoring_pretest.php" method="post" name="pertayaantes" id="pertayaantes">';
+    } else {
+        echo '<form action="scoring.php" method="post" name="pertayaantes" id="pertayaantes">';
+    }
+?>
 <div class="col-md-12">
 <?php
     if (session_status() == PHP_SESSION_NONE) {

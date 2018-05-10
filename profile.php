@@ -10,21 +10,23 @@
     $konsep_aktif = $_SESSION['konsep_aktif'];
     $topik_aktif = $_SESSION['topik_aktif'];
 
-    $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
-    $result = $con->query($query);
+    // GET DATA SISWA
+    $id_siswa = $_SESSION['nip'];
 
+    $query = "SELECT nama, email, tanggal_lahir, pendidikan, tahun_masuk FROM users WHERE nip = $id_siswa";
+    $result = $con->query($query);
     $row = $result->fetch(PDO::FETCH_NUM);
 
-    $konsep_aktif_judul = $row[1];
-    $topik_aktif_judul = $row[3];
-    $video_url_aktif = $row[5];
-
-    $dataPoints = array(
-        array("x" => 1 , "y" => 75),
-        array("x" => 2 , "y" => 20),
-        array("x" => 3 , "y" => 100),
-        array("x" => 4 , "y" => 0)
-    );
+    $nama = $row[0];
+    $email = $row[1];
+    $pendidikan = $row[3];
+    $tahun_masuk = $row[4];
+    
+    // GET USIA
+    $birth = new DateTime($row[2]); // three days difference! 
+    $today = new DateTime(); 
+    $diff = $birth->diff($today);
+    $umur = $diff->format('%y');
 ?>
 
 <html !DOCTYPE>
@@ -43,7 +45,21 @@
     
             <?php
                 include('navbar.php');
-            ?>  
+            ?>
+
+            <a href="progress.php">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
+                <i class="glyphicon glyphicon-stats"></i>
+                <span>Progres Belajar</span>
+            </button>
+            </a>
+            <a href="petunjuk.php">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
+                <i class="glyphicon glyphicon-question-sign"></i>
+                <span>Petunjuk Penggunaan</span>
+            </button>
+            </a>
+            <br />  
 
             <img class="img-fluid" src="https://images.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" alt="Profile" width="360"> 
 
@@ -60,32 +76,32 @@
             <tr>
                 <th class="tg-us36">NIP</th>
                 <th class="tg-us36">:</th>
-                <th class="tg-us36">11111</th>
+                <th class="tg-us36"><?= $id_siswa ?></th>
             </tr>
             <tr>
                 <td class="tg-us36">Nama</td>
                 <td class="tg-us36">:</td>
-                <td class="tg-us36">Admin</td>
+                <td class="tg-us36"><?= $nama ?></td>
             </tr>
             <tr>
                 <td class="tg-us36">Email</td>
                 <td class="tg-us36">:</td>
-                <td class="tg-us36">email@admin.com</td>
+                <td class="tg-us36"><?= $email ?></td>
             </tr>
             <tr>
                 <td class="tg-yw4l">Umur</td>
                 <td class="tg-yw4l">:</td>
-                <td class="tg-yw4l">12</td>
+                <td class="tg-yw4l"><?= (string) $umur ?></td>
             </tr>
             <tr>
                 <td class="tg-yw4l">Pendidikan</td>
                 <td class="tg-yw4l">:</td>
-                <td class="tg-yw4l">SMA</td>
+                <td class="tg-yw4l"><?= $pendidikan ?></td>
             </tr>
             <tr>
                 <td class="tg-yw4l">Tahun Masuk</td>
                 <td class="tg-yw4l">:</td>
-                <td class="tg-yw4l">2012</td>
+                <td class="tg-yw4l"><?= $tahun_masuk ?></td>
             </tr>
             </table>
         </div>

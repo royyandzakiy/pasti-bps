@@ -1,6 +1,9 @@
 <?php
     require('blog_connect.php'); 
     sql_connect('pasti_db');
+    require('head.php');
+
+    echo var_dump($_POST);
 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -33,11 +36,13 @@
     $rekap = array(); // TOTAL SCORE 
     $rekap_salah = array();
     $nilai = 0;
+
+    $nomor = 1;
     while($row = $result->fetch(PDO::FETCH_NUM)) {
         $row_konsep     = ($row[0] < 10 ? '0'.$row[0] : $row[0]);
         $id_topik       = ('0' . $row[1]);
         $id_test        = ($row[2] < 10 ? '0'.$row[2] : $row[2]);
-        $id_question    = ($row[3] < 10 ? '0'.$row[3] : $row[3]);
+        $id_question    = ('0'.$row[3]);
 
         //TOPIKTES: CHECK IF TOPIK NOT_EXIST
         if (array_key_exists($id_topik, $topiktes) === false) {
@@ -54,8 +59,10 @@
         if(!isset($_POST['q-'.$id_test.$id_question])) $_POST['q-'.$id_test.$id_question] = "";
         
         // CHECK IF ANSWER CORRECT
-        if ( ($test_type == 'pertayaantes' && $row_konsep == $konsep_aktif) || $test_type == 'pretest') {
-            $correct = $row[6] == $_POST['q-'.$id_test.$id_question] ? 1 : 0;
+        if ( ($test_type == 'pertayaantes' && $row_konsep == $konsep_aktif) || $test_type == 'pretest') {   
+            echo $nomor . ". ";
+            echo  "[ q-$id_test$id_question ] : " .$_POST['q-'.$id_test.$id_question] . " === " . $row[6] . "<br />";
+            $correct = $row[6] === $_POST['q-'.$id_test.$id_question] ? 1 : 0;
             array_push($rekap, $correct);
 
             //---DEBUG
@@ -78,13 +85,13 @@
             echo "<br/>";
             //---END_DEBUG
         }
+        $nomor++;
     }
 
     $_SESSION['rekap_salah'] = $rekap_salah;
 
     // FUZZY LOGIC HERE
-    // ...
-    $tingkat_penguasaan = 0;
+    $tingkat_penguasaan = file_get_contents("http://localhost/My-projects/pasti/misc/fuzzy_logic.php?durasi=$durasi&jb=$jawaban_benar&nilai=$nilai");
 
     // DB: TOPIKTES
         // CHECK IF DATA TOPIKTEST EXISTS
@@ -104,6 +111,20 @@
             }
         }
     
+    // UPDATE LEVEL PENGETAHUAN
+
+    $level_pengetahuan = 0;
+    for ($i=1; $i<=3; $i++) {
+        $query = "SELECT id_siswa, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $i";
+        $result = $con->query($query);
+        if ($row = $result->fetch(PDO::FETCH_NUM)) {
+            // yes: PERNAH MELAKUKAN TES
+            $level_pengetahuan += ($row[1] / 100.0) * $row[5];
+        }
+    }
+    $query = "UPDATE users SET level_kemampuan = $level_pengetahuan WHERE nip = $id_siswa";
+    $result = $con->query($query);
+    
     // DB: KONSEP TES
         // CHECK IF DATA KONSEPTES EXISTS
         $_id = '';
@@ -122,7 +143,10 @@
             $query = "INSERT INTO konseptes (id_siswa, id_tes, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes) VALUES ($id_siswa, $konsep_aktif, $bobot_tes, $durasi, $jawaban_benar, $nilai, $tingkat_penguasaan, $jumlah_tes)";
             $result = $con->query($query);
 
-            $_id = $con->lastInsertId;
+            $query = "SELECT id FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $konsep_aktif";;
+            $result = $con->query($query);
+            $row = $result->fetch(PDO::FETCH_NUM);
+            $_id = $row[0];
         }
     
     // DB: RIWAYAT KONSEP
@@ -158,13 +182,15 @@
         }
 
     //---DEBUG
-    echo "JUMLAH BENAR TOTAL: ".$jawaban_benar."<br/>";
-    echo "TOTAL SCORE: ".$nilai." (Total dari Soal Benar * Bobot Soal)<br/>";
+    echo "JB: ".$jawaban_benar."<br/>";
+    echo "NILAI: " . $nilai . " (Total dari Soal Benar * Bobot Soal)<br/>";
+    echo "DURASI: " . $durasi . " menit<br />";
+    echo "TP: " . $tingkat_penguasaan . "<br />";
     echo "TOTAL WAKTU: " . $interval_h, " hours, ", $interval_m, " minutes, ", $interval_s, " seconds<br/>"; // debug
-    echo "TOTAL MENIT: " . $durasi . " menit<br />";
+    echo "UPDATE LEVEL PENGETAHUAN: " . $level_pengetahuan . "<br/>";
+    echo '$_id = ' . $_id . '<br/>';
     //---END_DEBUG
 
-    echo '$_id = ' . $_id;
     // header('location:hasil_tes.php?_id='.$_id);
 ?>
 

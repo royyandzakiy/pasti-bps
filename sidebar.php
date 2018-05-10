@@ -14,6 +14,13 @@
             $tingkat_penguasaan_array[$row[0] - 1] = $row[1];
         }
     }
+
+    // GET TOPIK TERJAUH YANG PERNAH DIPELAJARI
+    $id_siswa = $_SESSION['nip'];
+    $query = "SELECT max(id_topik) FROM riwayattopik WHERE id_siswa = $id_siswa";
+    $result = $con->query($query);
+    $row = $result->fetch(PDO::FETCH_NUM);
+    $max_konseptopik = $row[0];
 ?>
 
 <nav id="sidebar">
@@ -24,17 +31,17 @@
     <ul class="list-unstyled components">
 
         <?php
-            $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, locked_status FROM materi";
+            $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik FROM materi";
             $result = $con->query($query);
-
             $row = $result->fetch(PDO::FETCH_NUM);
+
             $crnt_judul = $row[1];
 
             echo('
                 <li class="active">
                             <a href="#konsep-'.$row[0].'" data-toggle="collapse" aria-expanded="false">'.$crnt_judul.'</a>
                             <ul class="collapse list-unstyled" id="konsep-'.$row[0].'">
-                            <li id="topik-'.$row[2].'"><a href="change_page.php?goto='.$row[2].'" class="'.($row[4] ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>
+                            <li id="topik-'.$row[2].'"><a href="'.($row[2] > $max_konseptopik ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.($row[2] > $max_konseptopik ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>
             ');
 
             while($row = $result->fetch(PDO::FETCH_NUM)) {
@@ -50,7 +57,7 @@
                     );
                 }
                 echo (
-                    '<li id="topik-'.$row[2].'"><a href="change_page.php?goto='.$row[2].'" class="'.(((int) $row[0] <= (int) $konsep_terakhir && (int) substr($row[2],2,2) <= (int) $topik_terakhir) ? 'unlocked' : 'locked').'">'.$row[3].'</a></li>'
+                    '<li id="topik-'.$row[2].'"><a href="'.($row[2] > $max_konseptopik ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.($row[2] > $max_konseptopik ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
                 );
             }
 
@@ -59,11 +66,11 @@
         ?>
 
     <ul class="list-unstyled CTAs">
+        <!-- <li>
+            <a href="#" class="download">Download materi</a>
+        </li> -->
         <li>
-            <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download materi</a>
-        </li>
-        <li>
-            <a href="hasil_belajar.php" class="article">Hasil belajar</a>
+            <a href="hasil_belajar.php" class="download">Hasil belajar</a>
         </li>
     </ul>
 

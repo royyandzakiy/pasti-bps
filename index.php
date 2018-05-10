@@ -7,6 +7,10 @@
 
     sql_connect('pasti_db');
 
+    if (isset($_SESSION['rekap_salah'])){
+        unset($_SESSION['rekap_salah']);
+    }
+    
     $konsep_aktif = (string) $_SESSION['konsep_aktif'];
     $topik_aktif = (string) $_SESSION['topik_aktif'];
     $konseptopik_aktif = (string) $konsep_aktif . (string) $topik_aktif;

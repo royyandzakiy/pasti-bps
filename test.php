@@ -5,6 +5,9 @@
 
     $test_type = 'pertayaantes';
     $_SESSION['test_type'] = $test_type;
+
+    $konsep_aktif = $_SESSION['konsep_aktif'];
+    $topik_aktif = $_SESSION['topik_aktif'];
 ?>
 
 <html !DOCTYPE>
@@ -25,7 +28,6 @@
     
             <?php
                 include('navbar.php');
-                echo "<h1>Tes Konsep - " . $_SESSION['konsep_aktif'] . "</h1>";
                 include('load_questions.php');
             ?>      
 

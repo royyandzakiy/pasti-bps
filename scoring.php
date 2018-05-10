@@ -112,23 +112,7 @@
                 $result = $con->query($query);
             }
         }
-    
-    // UPDATE LEVEL PENGETAHUAN
-
-    $level_pengetahuan = 0;
-    for ($i=1; $i<=3; $i++) {
-        $query = "SELECT id_siswa, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $i";
-        $result = $con->query($query);
-        if ($row = $result->fetch(PDO::FETCH_NUM)) {
-            // yes: PERNAH MELAKUKAN TES
-            $level_pengetahuan += ($row[1] / 100.0) * $row[5];
-        }
-    }
-    $query = "UPDATE users SET level_kemampuan = $level_pengetahuan WHERE nip = $id_siswa";
-    $result = $con->query($query);
-
-    $_SESSION['level_pengetahuan'] = $level_pengetahuan;
-    
+        
     // DB: KONSEP TES
         // CHECK IF DATA KONSEPTES EXISTS
         $_id = '';
@@ -184,6 +168,21 @@
         }
         $result = $con->query($query);
         echo var_dump($result);
+    
+    // UPDATE LEVEL PENGETAHUAN
+    $level_pengetahuan = 0;
+    for ($i=1; $i<=3; $i++) {
+        $query = "SELECT id_siswa, bobot_tes, durasi, jawaban_benar, nilai, tingkat_penguasaan, jumlah_tes FROM konseptes WHERE id_siswa = $id_siswa AND id_tes = $i";
+        $result = $con->query($query);
+        if ($row = $result->fetch(PDO::FETCH_NUM)) {
+            // yes: PERNAH MELAKUKAN TES
+            $level_pengetahuan += ($row[1] / 100.0) * $row[5];
+        }
+    }
+    $query = "UPDATE users SET level_kemampuan = $level_pengetahuan WHERE nip = $id_siswa";
+    $result = $con->query($query);
+
+    $_SESSION['level_pengetahuan'] = $level_pengetahuan;
     
     // DB: HASIL TEST
         $hasil = '';

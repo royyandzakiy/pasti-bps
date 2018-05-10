@@ -33,19 +33,25 @@
             $_SESSION['pengalaman_survei'] = $row[2];
             $_SESSION['pengalaman_SIBS'] = $row[3];
             $_SESSION['level_pengetahuan'] = $row[4];
-            // tentukan bakal buka materi mana
+            $_SESSION['nip'] = $row[7];
             $_SESSION['konsep_terakhir'] = $row[5];
             $_SESSION['topik_terakhir'] = $row[6];
-            $_SESSION['nip'] = $row[7];
 
             $_SESSION['konsep_aktif'] = $row[5];
             $_SESSION['topik_aktif'] = $row[6];
-
-            // for($i=0; $i<8; $i++) {
-            //     echo($row[$i] . '<br />');
-            // }
-
-            // echo('tes = ' . ((int) $row[5] <= (int) '01') ? 'true' : 'false');
+            
+            // tentukan bakal buka materi mana
+            // handle if last at 
+            $current_topik = $_SESSION['konsep_aktif'] . $_SESSION['topik_aktif'];
+            $is_test = ($current_topik == '0103' || $current_topik == '0207' || $current_topik == '0306');
+            $list_konseptopik = ['0101','0102','0103','0201','0202','0203','0204','0205','0206','0207','0301','0302','0303','0304','0305','0306'];
+            if ($is_test) {
+                $index_in_list = array_search($current_topik, $list_konseptopik);   
+                $index_back = $index_in_list > 0 ? $index_in_list - 1 : $index_in_list;
+                $back = $list_konseptopik[$index_back];
+                $_SESSION['konsep_aktif'] = substr($back,0,2);
+                $_SESSION['topik_aktif'] = substr($back,2,2);
+            }
 
             header('location:pra_pretest.php');
         } else {
@@ -211,7 +217,7 @@
                                 <div class="form-group">
                                     <label for="tanggal_lahir" class="col-md-3 control-label">Tanggal Lahir</label>
                                     <div class="col-md-9">
-                                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="" required/>
+                                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="" min="1950-1-1" max="2000-12-31" required/>
                                     </div>
                                 </div>
 

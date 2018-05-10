@@ -52,7 +52,8 @@
                 <li>Hasil tes akan menentukan apakah anda berhak lanjut ke BAB selanjutnya atau tidak</li>
                 <li>Setelah hasil tes keluar, PASTI akan merekomendasikan topik yang tingkat penguasaannya masih kurang (bila ada)</li>
                 <li>Ikuti rekomendasi tersebut untuk mencapai hasil yang lebih baik</li>
-                <li>Capailah level pengetahuan seorang ahli dengan rata-rata nilai tingkat penguasaan pada masing-masing BAB sebesar 90</li>
+                <li>Terdapat 4 level pengetahuan, yaitu PEMULA, MENENGAH, BAIK, AHLI</li>
+                <li>Capailah level pengetahuan seorang AHLI dengan rata-rata nilai tingkat penguasaan pada masing-masing BAB sebesar 90</li>
             </ol>
         </div>
     </div>

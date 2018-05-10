@@ -53,8 +53,12 @@
             $query = "SELECT * FROM riwayattopik WHERE id_siswa = $id_siswa AND id_topik = " . $back;
             $result = $con->query($query);
             $row = $result->fetch(PDO::FETCH_NUM);
-            
-            $allowed = ($row != false ? true : false);
+
+            if ((substr($goto,0,2) == '01') ||
+                (substr($goto,0,2) == '02' && $_SESSION['level_pengetahuan'] < 16) || 
+                (substr($goto,0,2) == '03' && $_SESSION['level_pengetahuan'] < 50)) {
+                    $allowed = ($row != false ? true : false);
+                }
         }
     }
     echo "Allowed: " . ($allowed ? 'true' : 'false') . "<br />";

@@ -28,6 +28,7 @@
     
             <?php
                 include('navbar.php');
+                echo "<h2>Tes Konsep BAB $konsep_aktif</h2>";
                 include('load_questions.php');
             ?>      
 

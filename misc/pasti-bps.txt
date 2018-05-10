@@ -1,0 +1,11 @@
+===adaptive-learning
+email: adaptivelearning.developers@gmail.com
+pass: sipmantap_123
+
+000webhost: adaptivelearning.developers@gmail.com
+pass: sipmantap_123
+
+## database
+database name: id5686025_pasti_bps
+database user: id5686025_pasti_bps
+database pass: pasti_bps

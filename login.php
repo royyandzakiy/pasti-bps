@@ -166,7 +166,8 @@
                                 <div class="form-group">
                                     <label for="NIP" class="col-md-3 control-label">NIP</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="NIP" placeholder="NIP 5 Digit" maxlength="5" required/>
+                                        <input type="text" class="form-control" name="NIP" placeholder="NIP 5 Digit" maxlength=5 minlength="5" required title="Harus berisi 5 digit" required/>
+                                        <div style="color:red" id="nip-text"></div>
                                     </div>
                                 </div>                                
                                   
@@ -271,12 +272,39 @@
                             </form>
                          </div>
                     </div>
-
-               
-               
-                
          </div> 
     </div>
+
+    <script>
+        $('input[name=daftar]').attr("disabled", true);
+
+        $('input[name=NIP]').change(function() { 
+            console.log($('input[name=NIP]').val());
+            
+            if ($('input[name=NIP]').val().length < 5) {
+                $('#nip-text').text('NIP ' + $('input[name=NIP]').val() + ' harus 5 digit');
+                $('input[name=daftar]').attr("disabled", true);
+            } else {
+
+                $.post("check_nip.php",
+                {
+                    nip: $('input[name=NIP]').val()
+                },
+                function(data, status){
+                    console.log("Data: " + data + "\nStatus: " + status);
+
+                    if (data == 'found') {
+                        $('#nip-text').text('NIP ' + $('input[name=NIP]').val() + ' sudah digunakan');
+                        $('input[name=daftar]').attr("disabled", true);
+                    } else {
+                        $('#nip-text').text('');
+                        $('input[name=daftar]').attr("disabled", false);
+                    }
+                });
+
+            }
+        });
+    </script>
     
 </body>
 

@@ -12,7 +12,6 @@
     $id_siswa = $_SESSION['nip'];
     $id_konseptes = $_GET['_id'];
 
-    echo "aktif: " . $konsep_aktif . $topik_aktif . "<br/>";
 
     // GET MATERI
     $query = "SELECT id_konsep, judul_konsep, id_topik, judul_topik, video_url FROM materi WHERE id_konsep = '$konsep_aktif' AND id_topik = " . $konsep_aktif . $topik_aktif;
@@ -144,18 +143,6 @@
             
             <hr />
             <?php
-                // if ($_SESSION['konsep_aktif'] == '01' && $level_pengetahuan > 16.0) {
-                //     $konsep_aktif = '02';
-                // } else if ($_SESSION['konsep_aktif'] == '02' && $level_pengetahuan > 50.0) {
-                //     $konsep_aktif = '03';
-                // }
-                // $topik_aktif = '01';
-                
-                // $_SESSION['konsep_aktif'] = $konsep_aktif;
-                // $_SESSION['topik_aktif'] = $topik_aktif;
-
-                echo "lp: " . $level_pengetahuan . "<br/>";
-                echo "konseptopik_aktif: " . $konsep_aktif . $topik_aktif . "<br/>";
             ?>
             <a href="change_page.php?goto=next"><button type="submit" class="btn btn-default">Decline</button></a>
             <?php

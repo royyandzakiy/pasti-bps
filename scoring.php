@@ -211,7 +211,7 @@
     echo '$_id = ' . $_id . '<br/>';
     //---END_DEBUG
 
-    // header('location:hasil_tes.php?_id='.$_id);
+    header('location:hasil_tes.php?_id='.$_id);
 ?>
 
 <a href="hasil_tes.php?_id=<?= $_id ?>"><button class="btn">Next</button></a>

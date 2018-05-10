@@ -31,7 +31,7 @@
 
             $list_konseptopik = ['0100','0101','0102','0103','0201','0202','0203','0204','0205','0206','0207','0301','0302','0303','0304','0305','0306'];
             $current_konsep = $row[0]; // get konsep-01
-            $current_topik = $row[2]; // get topik-01
+            $current_topik = $row[2]; // get topik-0101
             $locked = true;
 
             // CREATE FIRST LIST
@@ -90,9 +90,13 @@
                     $next = $list_konseptopik[$index_next];
                     if ($current_topik <= $next) {
                         // SET SIDEBAR UNLOCK
+                        if ($current_konsep == '01' ||
+                            ($current_konsep == '02' && $_SESSION['level_pengetahuan'] > 16) ||
+                            ($current_konsep == '03' && $_SESSION['level_pengetahuan'] > 50)) {
                         $locked = false;
+                        }
                     }
-                }
+            }
                 echo (
                     '<li id="topik-'.$current_topik.'"><a title="'.($locked ? 'Masih Terkunci' : '').'" href="'.($locked ? '#' : 'change_page.php?goto='.$current_topik).'" class="'. ($locked ? 'locked' : 'unlocked') .'">'.$row[3].'</a></li>'
                 );
@@ -104,7 +108,7 @@
 
     <ul class="list-unstyled CTAs">
         <li>
-            <a href="#" class="download">Download</a>
+            <a href="download.php" class="download">Download</a>
         </li>
     </ul>
 

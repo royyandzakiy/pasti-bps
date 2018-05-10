@@ -7,8 +7,8 @@
 
     sql_connect('pasti_db');
 
-    $konsep_aktif = $_SESSION['konsep_aktif'];
-    $topik_aktif = $_SESSION['topik_aktif'];
+    $konsep_aktif = $_GET['konsep_aktif'];
+    $topik_aktif = $_GET['topik_aktif'];
     $id_siswa = $_SESSION['nip'];
     // $id_konseptes = $_GET['_id'];
 
@@ -45,7 +45,7 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <?php
-            include('sidebar.php');
+            include('sidebar_singkat.php');
         ?>
     
         <!-- Page Content Holder -->
@@ -127,8 +127,9 @@
                 </tr>
             </table>
 
-            <a href="change_page.php?goto=<?= ($konsep_aktif > 1 ? $konsep_aktif-1 : '01') ?>01"><button type="submit" class="btn btn-default">Back</button></a>
-            <a href="change_page.php?goto=<?= $konsep_aktif ?>01"><button type="submit" class="btn btn-primary">Next</button></a>
+            <!-- <a href="change_page.php?goto=<?= ($konsep_aktif > 1 ? $konsep_aktif-1 : '01') ?>01"><button type="submit" class="btn btn-default">Back</button></a>
+            <a href="change_page.php?goto=<?= $konsep_aktif ?>01"><button type="submit" class="btn btn-primary">Next</button></a> -->
+            <a href="index.php"><button type="submit" class="btn btn-primary">Back</button></a>
 
         </div>
     </div>
@@ -138,7 +139,7 @@
         $(document).ready(function () {
 
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+                $('#sidebar').toggleClass('active');$('#content').toggleClass('active');
             });
 
         });

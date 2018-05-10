@@ -63,7 +63,22 @@ a:focus {
     transition: all 0.3s;
 }
 
+#sidebar-fixed {
+    min-width: 250px;
+    max-width: 250px;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+}
+
 #sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar-fixed.active {
     margin-left: -250px;
 }
 
@@ -91,6 +106,11 @@ a:focus {
 #sidebar ul li a.unlocked:hover {
     color: #7386D5;
     background: #fff;
+}
+
+a.locked {
+    color: rgba(217,213,278,.7);
+    cursor: not-allowed;
 }
 
 #sidebar ul li a.locked:hover {
@@ -162,16 +182,33 @@ a.article:hover {
     transition: all 0.3s;
 }
 
+#content-fixed {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    margin-left:250px;
+}
+
+#content-fixed.active {
+    margin-left: 0px;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: 0px;
     }
     #sidebar.active {
+        margin-left: -250px;
+    }
+    #sidebar-fixed {
         margin-left: 0;
+    }
+    #sidebar-fixed.active {
+        margin-left: -250px;
     }
     #sidebarCollapse span {
         display: none;

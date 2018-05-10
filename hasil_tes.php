@@ -60,15 +60,14 @@
             </h4>
             <hr />
             <h2><?php 
-                if ($tingkat_penguasaan < 40) {
-                    echo "Pemula";
-                } else if ($tingkat_penguasaan >= 40 && $tingkat_penguasaan <70) {
-                    echo "Menengah";
-                } else if ($tingkat_penguasaan >= 70 && $tingkat_penguasaan < 90) {
-                    echo "Baik!";
-                } else {
-                    echo "Ahli!";
+                If ($tingkat_penguasaan < 50) {
+                    $Deskripsi = "Kurang";
+                } Else If ($tingkat_penguasaan == 50) {
+                    $Deskripsi = "Cukup";
+                } Else If ($tingkat_penguasaan > 50) {
+                    $Deskripsi = "Baik";
                 }
+                echo $Deskripsi;
             ?></h2>
             <table>
                 <tr>
@@ -156,11 +155,15 @@
                 
                 $_SESSION['konsep_aktif'] = $konsep_aktif;
                 $_SESSION['topik_aktif'] = $topik_aktif;
-
-                $goto = $konsep_aktif . $topik_aktif;
             ?>
-            <a href="change_page.php?goto=<?= $goto ?>"><button type="submit" class="btn btn-default">Decline</button></a>
-            <a href="rekomendasi.php?rekomendasi=0"><button type="submit" class="btn btn-primary">Accept</button></a>
+            <a href="change_page.php?goto=next"><button type="submit" class="btn btn-default">Decline</button></a>
+            <?php
+            if ($tingkat_penguasaan == 100) {
+                // do nothing... you can only decline forward
+            } else {
+                echo '<a href="rekomendasi.php?rekomendasi=0"><button type="submit" class="btn btn-primary">Accept</button></a>';
+            }
+            ?>
         </div>
     </div>
 
@@ -169,7 +172,7 @@
         $(document).ready(function () {
 
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+                $('#sidebar').toggleClass('active');$('#content').toggleClass('active');
             });
 
         });

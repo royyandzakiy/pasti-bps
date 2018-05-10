@@ -1,22 +1,3 @@
 TODO:
-- signup
-	- usia: TTL (validasi input: paling tua 55th.)
-	- masa kerja (dari tahun masuk BPS, validasi input: max tahun ini, gamungkin dr 70an)
-x hasil_tes: hasil
-	- pemula <40
-	- menengah >=40 && <70
-	- baik >=70 && <90
-	- ahli >=90
-x hasil_tes: rekomendasi
-	- dari soal salah, tampilkan kode topik tiap soal
-	- muncul klo ada 1 saja dari topik terkait yg salah pengerjaannya
-	- menentukan change_page
-	- accept: menuju ke topik yg direkomendasikan
-x buat hasil_belajar > di SS
-x implementasi fuzzy logic
-x buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
-	- hanya bisa ke topik selanjutnya jika sudah pernah akses topik sebelumnya
-x buat alur pada "change_page" (gabisa pindah bab klo level_pengetahuan kurang)
-	- bab 2: LP = 16
-	- bab 3: LP = 50
-- scoring: fix error, insert new entry
+- change_page   : next, goto, allow
+- sidebar       : unlocking

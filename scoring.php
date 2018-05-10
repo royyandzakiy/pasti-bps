@@ -10,6 +10,9 @@
     }
     $test_type = $_SESSION['test_type'];
     $id_siswa = $_SESSION['nip'];
+    $konsep_aktif = $_SESSION['konsep_aktif'];
+    $topik_aktif = $_SESSION['topik_aktif'];
+    $id_siswa = $_SESSION['nip'];
 
     // GET: ELAPSED TIME OF TEST
     $test_datetime_start = new DateTime($_SESSION['test_datetime_start']);
@@ -29,7 +32,6 @@
     // GET: DATA HASIL TEST
     $query = "SELECT id_konsep, id_topik, id_test, id_question, weight, question, correct, A, B, C, D FROM $test_type";
     $result = $con->query($query);
-    $konsep_aktif = $_SESSION['konsep_aktif'];
     $bobot_tes = ($konsep_aktif == '01' ? 20 : 40);
     
     $jawaban_benar = 0;
@@ -124,6 +126,8 @@
     }
     $query = "UPDATE users SET level_kemampuan = $level_pengetahuan WHERE nip = $id_siswa";
     $result = $con->query($query);
+
+    $_SESSION['level_pengetahuan'] = $level_pengetahuan;
     
     // DB: KONSEP TES
         // CHECK IF DATA KONSEPTES EXISTS
@@ -162,6 +166,22 @@
             $jumlah_tes = 1;
             $query = "INSERT INTO riwayatkonsep (id_siswa, id_konsep, tingkat_penguasaan) VALUES ('$id_siswa', '$konsep_aktif', '$tingkat_penguasaan')";
             $result = $con->query($query);
+        }
+    
+    // DB: ADD RIWAYAT TOPIK
+        // check if already exist
+        $tes_aktif = (string) $konsep_aktif . (string) $topik_aktif;
+        $query = "SELECT * FROM riwayattopik WHERE id_siswa = $id_siswa AND id_topik = " . (string) $tes_aktif;
+        $result = $con->query($query);
+
+        echo $query;
+
+        if ($row = $result->fetch(PDO::FETCH_NUM)) {
+            // update riwayattopik
+            $query = "UPDATE riwayattopik SET jumlah_topik = jumlah_topik + 1 WHERE id_siswa = $id_siswa AND id_topik = " . (string) $tes_aktif;
+        } else {
+            // insert new to riwayattopik
+            $query = "INSERT INTO riwayattopik (id_siswa, id_topik, jumlah_topik) VALUES ($id_siswa, " . (string) $tes_aktif . ", 1)";
         }
     
     // DB: HASIL TEST

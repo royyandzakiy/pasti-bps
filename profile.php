@@ -61,7 +61,7 @@
             </a>
             <br />  
 
-            <img class="img-fluid" src="https://images.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" alt="Profile" width="360"> 
+            <!-- <img class="img-fluid" src="https://images.pexels.com/photos/36753/flower-purple-lical-blosso.jpg" alt="Profile" width="360">  -->
 
             <style type="text/css">
             .tg  {border-collapse:collapse;border-spacing:0;}
@@ -112,7 +112,7 @@
         $(document).ready(function () {
 
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+                $('#sidebar').toggleClass('active');$('#content').toggleClass('active');
             });
 
         });

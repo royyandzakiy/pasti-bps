@@ -4,7 +4,7 @@
 
     if (session_status() != PHP_SESSION_NONE) {
         if ($_SESSION['logged_in']) {
-            header('location:index.php');
+            header('location:pra_pretest.php');
         } else {
             session_destroy();
         }
@@ -47,7 +47,7 @@
 
             // echo('tes = ' . ((int) $row[5] <= (int) '01') ? 'true' : 'false');
 
-            header('location:index.php');
+            header('location:pra_pretest.php');
         } else {
             header('location:login.php?login_status=false');
         }
@@ -86,6 +86,15 @@
                         <div class="panel-title">Login</div>
                     </div>     
 
+                    <?php
+                        if (isset($_GET['msg'])) {
+                            if ($_GET['msg'] == 'nip_used') {    
+                                // echo "NIP sudah digunakan, silahkan mendaftar dengan NIP lain";
+                            }
+                            unset($_GET['msg']);
+                        }
+                    ?>
+
                     <div style="padding-top:30px" class="panel-body" >
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
@@ -94,7 +103,7 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit" maxlength="5" required/>                                        
+                                        <input id="login-nip" type="text" class="form-control" name="nip" value="" placeholder="NIP 5 Digit" maxlength="5" minlength="5" required/>                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">

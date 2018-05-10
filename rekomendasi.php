@@ -32,18 +32,7 @@
     $video_url_aktif = $row[4];
 
     // ADD RIWAYAT TOPIK
-    // check if already exist
-    $id_siswa = $_SESSION['nip'];
-    $query = "SELECT * FROM riwayattopik WHERE id_siswa = $id_siswa AND id_topik = " . (string) $konseptopik_aktif;
-    $result = $con->query($query);
-
-    if ($row = $result->fetch(PDO::FETCH_NUM)) {
-        // update riwayattopik
-        $query = "UPDATE riwayattopik SET jumlah_topik = jumlah_topik + 1";
-    } else {
-        // insert new to riwayattopik
-        $query = "INSERT INTO riwayattopik (id_siswa, id_topik, jumlah_topik) VALUES ($id_siswa, " . (string) $konseptopik_aktif . ", 1)";
-    }
+    
     
     $result = $con->query($query);
     //*/
@@ -72,9 +61,11 @@
             </h4>
             <hr />
             <h2><?php echo $topik_aktif .' - '. $topik_aktif_judul; ?></h2>
-            <div class="videoWrapper">
+            <!-- <div class="videoWrapper">
                 <iframe width="560" height="349" src="https://www.youtube.com/embed/<?= $video_url_aktif; ?>" frameborder="0" allowfullscreen></iframe>
-            </div>
+            </div> -->
+
+            <div id="player"></div>
             
             <hr />
             <a href="rekomendasi.php?rekomendasi=<?= ($rekomendasi_pos > 0 ? $rekomendasi_pos - 1 : 0) ?>"><button type="submit" class="btn btn-default">Back</button></a>
@@ -89,12 +80,69 @@
         </div>
     </div>
 
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '349',
+          width: '560',
+          videoId: '<?= $video_url_aktif; ?>',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        // event.target.playVideo(); // autoplay
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      var sudah = false;
+      function addRiwayatTopik() {
+        $.post("riwayat_topik.php",
+            {
+                // kosong...
+            },
+            function(data, status){
+                console.log("Data: " + data + "\nStatus: " + status);
+            });
+      }
+      
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+            console.log("Video played!");
+            console.log("SENT AJAX!");
+            if (!sudah) {
+                addRiwayatTopik();
+                sudah = true;
+            }
+        }
+      } 
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
 
     <script>
         $(document).ready(function () {
 
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+                $('#sidebar').toggleClass('active');$('#content').toggleClass('active');
             });
 
         });

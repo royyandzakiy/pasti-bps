@@ -15,7 +15,20 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#"><b>Selamat Datang, <?= $_SESSION['nama'] ?>!</b></a>
+                    <a href="#"><b>Selamat Datang, <?= $_SESSION['nama'] ?>!</b> <span style="color:green">Lv. 
+                    <?php
+                        $level_pengetahuan = $_SESSION['level_pengetahuan'];
+                        if ($level_pengetahuan < 40) {
+                            echo "Pemula";
+                        } else if ($level_pengetahuan >= 40 && $level_pengetahuan <70) {
+                            echo "Menengah";
+                        } else if ($level_pengetahuan >= 70 && $level_pengetahuan < 90) {
+                            echo "Baik!";
+                        } else {
+                            echo "Ahli!";
+                        }
+                    ?></span>
+                    </a>
                 </li>
                 <li>
                     <a href="index.php">Home</a>

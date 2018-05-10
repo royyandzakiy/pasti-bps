@@ -10,7 +10,7 @@
 
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h3>Materi</h3>
+        <h3>Hasil Belajar</h3>
     </div>
 
     <ul class="list-unstyled components">
@@ -22,20 +22,23 @@
             $row = $result->fetch(PDO::FETCH_NUM);
             $crnt_judul = $row[1];
 
+            $konsep_pilih = 1;
+
             echo('
                 <li class="active">
-                            <a href="#">'.$crnt_judul.'</a>
+                            <a href="hasil_belajar.php?konsep_aktif=0'.$konsep_pilih.'&topik_aktif=0'.$konsep_pilih.'">'.$crnt_judul.'</a>
             ');
 
             while($row = $result->fetch(PDO::FETCH_NUM)) {
                 if ($row[1] != $crnt_judul) 
                 {
                     $crnt_judul = $row[1];
+                    $konsep_pilih++;
                     echo (
                             '</li>
                         <li class="active">
-                            <a href="#">'.$crnt_judul.'</a>'
-                    );
+                            <a href="hasil_belajar.php?konsep_aktif=0'.$konsep_pilih.'&topik_aktif=0'.$konsep_pilih.'">'.$crnt_judul.'</a>
+                    ');
                 }
             }
 

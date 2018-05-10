@@ -45,6 +45,7 @@
             ');
 
             while($row = $result->fetch(PDO::FETCH_NUM)) {
+                // KONSEP
                 if ($row[1] != $crnt_judul) 
                 {
                     $crnt_judul = $row[1];
@@ -56,9 +57,42 @@
                             <ul class="collapse list-unstyled" id="konsep-'.$row[0].'">'
                     );
                 }
-                echo (
-                    '<li id="topik-'.$row[2].'"><a href="'.($row[2] > $max_konseptopik ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.($row[2] > $max_konseptopik ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
-                );
+                // TOPIK
+                // test
+                $is_test = ($row[2] == '0103' || $row[2] == '0207' || $row[2] == '0306');
+                $is_start = ($row[2] == '0201' || $row[2] == '0301');
+                // echo "start:" . $is_start;
+                if ($is_test) {
+                    // check if ever watched materi before
+                    $query_riwayat = "SELECT * FROM riwayattopik WHERE id_siswa = ".$_SESSION['nip']." AND id_topik = ".($row[2]-1);
+                    $result_riwayat = $con->query($query_riwayat);
+                    $row_riwayat = $result_riwayat->fetch(PDO::FETCH_NUM);
+                    if ($row_riwayat) {
+                        echo (
+                            '<li id="topik-'.$row[2].'"><a href="change_page.php?goto='.$row[2].'" class="unlocked">'.$row[3].'</a></li>'
+                        );
+                    } else {
+                        echo (
+                            '<li id="topik-'.$row[2].'"><a href="#" class="locked">'.$row[3].'</a></li>'
+                        );
+                    }
+                } else if ($is_start) {
+                // start
+                    $is_pass_level_pengetahuan = false;
+                    if ($row[2] == '0201' && $_SESSION['level_pengetahuan'] > 16) {
+                        $is_pass_level_pengetahuan = true;
+                    } else if ($row[2] == '0301' && $_SESSION['level_pengetahuan'] > 50) {
+                        $is_pass_level_pengetahuan = true;
+                    }
+                    echo (
+                        '<li id="topik-'.$row[2].'"><a href="'.(!$is_pass_level_pengetahuan ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.(!$is_pass_level_pengetahuan ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
+                    );
+                } else {
+                    // non-test
+                    echo (
+                        '<li id="topik-'.$row[2].'"><a href="'.($row[2] > $max_konseptopik ? '#' : 'change_page.php?goto='.$row[2]).'" class="'.($row[2] > $max_konseptopik ? 'locked' : 'unlocked').'">'.$row[3].'</a></li>'
+                    );
+                }
             }
 
             echo('</ul>
@@ -70,7 +104,7 @@
             <a href="#" class="download">Download materi</a>
         </li> -->
         <li>
-            <a href="hasil_belajar.php" class="download">Hasil belajar</a>
+            <a href="#" class="download">Download</a>
         </li>
     </ul>
 

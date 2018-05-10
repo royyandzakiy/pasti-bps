@@ -45,10 +45,10 @@
 
             <h3>Petunjuk Penggunaan</h3>
             <ol>
-                <li>PASTI adalah Pembelajaran Adaptif Sistem Tahunan informasi</li>
+                <li>PASTI adalah Pembelajaran Adaptif Survei Tahunan informasi</li>
                 <li>Pelajari Bab dan Topik satu-persatu secara bertahap</li>
                 <li>Anda dapat mendownload semua daftar dan kuesioner pada sistem ini</li>
-                <li>Setelah mempelajarai Topik-topik dalam BAB, ikuti tes untuk mengetahui tingkat penguasaan anda terhadap BAB tersebut</li>
+                <li>Setelah mempelajari Topik-topik dalam setiap BAB, ikuti tes untuk mengetahui tingkat penguasaan anda terhadap BAB tersebut</li>
                 <li>Hasil tes akan menentukan apakah anda berhak lanjut ke BAB selanjutnya atau tidak</li>
                 <li>Setelah hasil tes keluar, PASTI akan merekomendasikan topik yang tingkat penguasaannya masih kurang (bila ada)</li>
                 <li>Ikuti rekomendasi tersebut untuk mencapai hasil yang lebih baik</li>
@@ -62,7 +62,7 @@
         $(document).ready(function () {
 
             $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+                $('#sidebar').toggleClass('active');$('#content').toggleClass('active');
             });
 
         });

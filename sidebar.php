@@ -74,7 +74,11 @@
                     $result_riwayat = $con->query($query_riwayat);
                     $row_riwayat = $result_riwayat->fetch(PDO::FETCH_NUM);
 
-                    if ($row_riwayat) {
+                    if (($row_riwayat) &&
+                            ($current_konsep == '01') ||
+                            ($current_konsep == '02' && $_SESSION['level_pengetahuan'] > 16) ||
+                            ($current_konsep == '03' && $_SESSION['level_pengetahuan'] > 50))
+                     {
                         $locked = false;
                     }
                 } else if ($is_start) {

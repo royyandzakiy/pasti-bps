@@ -27,5 +27,5 @@ if ($row = $result->fetch(PDO::FETCH_NUM)) {
 
 $result = $con->query($query);
 
-echo var_dump($result);
+// echo var_dump($result);
 ?>

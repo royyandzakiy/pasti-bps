@@ -173,16 +173,17 @@
         $tes_aktif = (string) $konsep_aktif . (string) $topik_aktif;
         $query = "SELECT * FROM riwayattopik WHERE id_siswa = $id_siswa AND id_topik = " . (string) $tes_aktif;
         $result = $con->query($query);
+        $row = $result->fetch(PDO::FETCH_NUM);
 
-        echo $query;
-
-        if ($row = $result->fetch(PDO::FETCH_NUM)) {
+        if ($row) {
             // update riwayattopik
             $query = "UPDATE riwayattopik SET jumlah_topik = jumlah_topik + 1 WHERE id_siswa = $id_siswa AND id_topik = " . (string) $tes_aktif;
         } else {
             // insert new to riwayattopik
             $query = "INSERT INTO riwayattopik (id_siswa, id_topik, jumlah_topik) VALUES ($id_siswa, " . (string) $tes_aktif . ", 1)";
         }
+        $result = $con->query($query);
+        echo var_dump($result);
     
     // DB: HASIL TEST
         $hasil = '';

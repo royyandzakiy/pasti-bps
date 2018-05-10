@@ -118,8 +118,8 @@
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
             console.log("Video played!");
-            console.log("SENT AJAX!");
             if (!sudah) {
+                console.log("SENT AJAX!");
                 addRiwayatTopik();
                 sudah = true;
             }
